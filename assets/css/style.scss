@@ -1,0 +1,103 @@
+@import "../stylesheets/bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+
+$background-color: #161616;
+$green-color:#27ae60;
+$site-font:'Roboto', sans-serif;
+$footer-height:20px;
+body{
+  background-color: $background-color;
+  font-family: $site-font;
+}
+div.main{
+  min-height: calc(100vh - 20px);
+  overflow-y: hidden;
+  div.name {
+    h1 {
+      color: #fff;
+      font-weight: 300;
+      margin: 0;
+      padding: 20vh 20% 0 0;
+      text-align: right;
+
+    }
+    a {
+      font-weight: 300;
+      text-transform: uppercase;
+      color: #27ae60;
+      padding: 5px 10px;
+      border: 2px solid;
+      font-size: 20px;
+      display: block;
+      width: 180px;
+      float: right;
+      text-align: center;
+      margin-right: 20%;
+      transition: 0.3s;
+      &:hover {
+        color: #fff;
+        border: 2px solid #27ae60;
+        background: #27ae60;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+      &:focus {
+        outline: none;
+        text-decoration: none;
+      }
+    }
+    h3 {
+      font-weight: 300;
+      color: #D6D6D6;
+      padding-right: 20%;
+      text-align: right;
+      margin: 10px 0 50px 0;
+      font-size: 20px;
+    }
+  }
+  div.social{
+    clear: both;
+    text-align: center;
+    padding-top: 150px;
+    padding-bottom: 15px;
+    width: 30%;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(188, 188, 188, 0.55);
+    a{
+      margin: 0 15px;
+      i{
+        font-size: 25px;
+        color: #fff;
+        border: 2px solid;
+        padding: 7px;
+        border-radius: 25px;
+        transition: 0.3s;
+        &:hover{
+          color:$green-color;
+          transition: 0.3s;
+        }
+      }
+
+    }
+  }
+  div.contacts_footer{
+    text-align: center;
+    margin-top: 15px;
+    ul{
+      list-style: none;
+      color: #fff;
+      font-weight: 300;
+      padding: 0;
+      li{
+
+        display: inline-block;
+        margin: 0 15px;
+      }
+    }
+  }
+}
+footer{
+  height: 20px;
+  color: #C5C5C5;
+  text-align: center;
+}
