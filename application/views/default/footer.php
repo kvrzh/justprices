@@ -1,5 +1,5 @@
 <footer>
-    @kvrzh
+    @kvrzh 2016
 </footer>
 <!-- HelloPreload http://hello-site.ru/preloader/ -->
 <style type="text/css">#hellopreloader>p{display:none;}#hellopreloader_preload{display: block;position: fixed;z-index: 99999;top: 0;left: 0;width: 100%;height: 100%;min-width: 1000px; background: #161616 url(http://hello-site.ru//main/images/preloads/oval.svg) center center no-repeat;background-size:41px; background-attachment: fixed;}</style>
