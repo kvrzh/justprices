@@ -1,8 +1,9 @@
 <div class="main">
     <div class="name">
+        <img src="<?=img_url('logo.png'); ?>"/>
         <h1 >Скидки в Киеве? Просто!</h1>
         <h3>Еще какая то занимательная хуйня про наш сервис</h3>
-        <a href="#">Вперед</a>
+        <a href="<?=base_url('sales') ?>">Вперед</a>
     </div>
     <div class="social">
         <a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a>

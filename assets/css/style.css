@@ -5808,76 +5808,83 @@ button.close {
   .hidden-print {
     display: none !important; } }
 body {
-  background-color: #161616;
-  font-family: "Roboto", sans-serif; }
+  background: url(../images/bg.jpg) #161616;
+  font-family: "Roboto", sans-serif;
+  background-size: cover; }
 
-div.main {
+div.main, div.sales {
   min-height: calc(100vh - 20px);
   overflow-y: hidden; }
-  div.main div.name h1 {
-    color: #fff;
-    font-weight: 300;
-    margin: 0;
-    padding: 20vh 20% 0 0;
-    text-align: right; }
-  div.main div.name a {
-    font-weight: 300;
-    text-transform: uppercase;
-    color: #27ae60;
-    padding: 5px 10px;
-    border: 2px solid;
-    font-size: 20px;
-    display: block;
-    width: 180px;
-    float: right;
-    text-align: center;
-    margin-right: 20%;
-    transition: 0.3s; }
-    div.main div.name a:hover {
+  div.main div.name, div.sales div.name {
+    min-height: calc(100vh - 180px); }
+    div.main div.name h1, div.sales div.name h1 {
       color: #fff;
-      border: 2px solid #27ae60;
-      background: #27ae60;
-      text-decoration: none;
+      font-weight: 300;
+      margin: 0;
+      padding: 30vh 15% 0 0;
+      text-align: right; }
+    div.main div.name img, div.sales div.name img {
+      float: left;
+      margin-left: 10%;
+      margin-top: calc(30vh + 41px);
+      width: 20%; }
+    div.main div.name a, div.sales div.name a {
+      font-weight: 400;
+      text-transform: uppercase;
+      color: #27ae60;
+      padding: 5px 10px;
+      border: 2px solid;
+      font-size: 20px;
+      display: block;
+      width: 180px;
+      float: right;
+      text-align: center;
+      margin-right: 15%;
       transition: 0.3s; }
-    div.main div.name a:focus {
-      outline: none;
-      text-decoration: none; }
-  div.main div.name h3 {
-    font-weight: 300;
-    color: #D6D6D6;
-    padding-right: 20%;
-    text-align: right;
-    margin: 10px 0 50px 0;
-    font-size: 20px; }
-  div.main div.social {
+      div.main div.name a:hover, div.sales div.name a:hover {
+        color: #fff;
+        border: 2px solid #27ae60;
+        background: #27ae60;
+        text-decoration: none;
+        transition: 0.3s; }
+      div.main div.name a:focus, div.sales div.name a:focus {
+        outline: none;
+        text-decoration: none; }
+    div.main div.name h3, div.sales div.name h3 {
+      font-weight: 300;
+      color: #D6D6D6;
+      padding-right: 15%;
+      text-align: right;
+      margin: 20px 0;
+      font-size: 20px; }
+  div.main div.social, div.sales div.social {
     clear: both;
     text-align: center;
-    padding-top: 150px;
     padding-bottom: 15px;
     width: 30%;
     margin: 0 auto;
     border-bottom: 1px solid rgba(188, 188, 188, 0.55); }
-    div.main div.social a {
+    div.main div.social a, div.sales div.social a {
       margin: 0 15px; }
-      div.main div.social a i {
+      div.main div.social a i, div.sales div.social a i {
         font-size: 25px;
         color: #fff;
         border: 2px solid;
         padding: 7px;
         border-radius: 25px;
         transition: 0.3s; }
-        div.main div.social a i:hover {
+        div.main div.social a i:hover, div.sales div.social a i:hover {
           color: #27ae60;
           transition: 0.3s; }
-  div.main div.contacts_footer {
+  div.main div.contacts_footer, div.sales div.contacts_footer {
     text-align: center;
     margin-top: 15px; }
-    div.main div.contacts_footer ul {
+    div.main div.contacts_footer ul, div.sales div.contacts_footer ul {
       list-style: none;
       color: #fff;
       font-weight: 300;
       padding: 0; }
-      div.main div.contacts_footer ul li {
+      div.main div.contacts_footer ul li, div.sales div.contacts_footer ul li {
         display: inline-block;
         margin: 0 15px; }
 

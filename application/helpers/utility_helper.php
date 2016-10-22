@@ -22,7 +22,7 @@ function js_url($file)
 
 function img_url($file)
 {
-    return assets_url() . 'img/' . $file;
+    return assets_url() . 'images/' . $file;
 }
 
 function encode_pass($string)

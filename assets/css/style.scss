@@ -6,23 +6,32 @@ $green-color:#27ae60;
 $site-font:'Roboto', sans-serif;
 $footer-height:20px;
 body{
-  background-color: $background-color;
+
+  background:url(../images/bg.jpg) $background-color;
   font-family: $site-font;
+  background-size: cover;
 }
 div.main{
   min-height: calc(100vh - 20px);
   overflow-y: hidden;
   div.name {
+    min-height: calc(100vh - 180px);
     h1 {
       color: #fff;
       font-weight: 300;
       margin: 0;
-      padding: 20vh 20% 0 0;
+      padding: 30vh 15% 0 0;
       text-align: right;
 
     }
+    img{
+      float: left;
+      margin-left: 10%;
+      margin-top: calc(30vh + 41px);
+      width: 20%;
+    }
     a {
-      font-weight: 300;
+      font-weight: 400;
       text-transform: uppercase;
       color: #27ae60;
       padding: 5px 10px;
@@ -32,7 +41,7 @@ div.main{
       width: 180px;
       float: right;
       text-align: center;
-      margin-right: 20%;
+      margin-right: 15%;
       transition: 0.3s;
       &:hover {
         color: #fff;
@@ -49,16 +58,15 @@ div.main{
     h3 {
       font-weight: 300;
       color: #D6D6D6;
-      padding-right: 20%;
+      padding-right: 15%;
       text-align: right;
-      margin: 10px 0 50px 0;
+      margin: 20px 0;
       font-size: 20px;
     }
   }
   div.social{
     clear: both;
     text-align: center;
-    padding-top: 150px;
     padding-bottom: 15px;
     width: 30%;
     margin: 0 auto;
@@ -96,8 +104,11 @@ div.main{
     }
   }
 }
+div.sales{
+  @extend div.main;
+}
 footer{
-  height: 20px;
+  height: $footer-height;
   color: #C5C5C5;
   text-align: center;
 }

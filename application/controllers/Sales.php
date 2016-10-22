@@ -6,9 +6,9 @@
  * Date: 21.10.16
  * Time: 14:41
  */
-class Prices extends MY_Controller
+class Sales extends MY_Controller
 {
     function index(){
-        $this->_view('prices/main');
+        $this->_view('sales/main');
     }
 }
