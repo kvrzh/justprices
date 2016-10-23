@@ -8,7 +8,14 @@
  */
 class Sales extends MY_Controller
 {
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model(array('Sales_model'));
+    }
+
     function index(){
-        $this->_view('sales/main');
+        $data['sales'] = $this->Sales_model->getSales();
+        $this->_view('sales/main', $data);
     }
 }

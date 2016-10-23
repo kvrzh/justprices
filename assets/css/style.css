@@ -5888,6 +5888,178 @@ div.main, div.sales {
         display: inline-block;
         margin: 0 15px; }
 
+div.sales header {
+  height: 50px;
+  background-color: #000;
+}
+
+div.sales header .logo {
+  height: 50px;
+}
+
+div.sales header .logo img {
+  height: 30px;
+  margin-top: 10px;
+  float: left;
+  display: inline-block;
+}
+
+div.sales header .logo div {
+  text-align: center;
+  padding-left: 30px;
+}
+
+@media only screen and (max-width: 1100px) {
+  div.sales header .logo div {
+    display: none;
+  }
+}
+
+div.sales header .logo div a {
+  display: inline-block;
+  height: 50px;
+  line-height: 50px;
+  margin: 0 10px;
+  font-size: 24px;
+  color: #fff;
+  transition: 0.3s;
+}
+
+div.sales header .logo div a:hover {
+  color: #27ae60;
+  transition: 0.3s;
+}
+
+div.sales header .search {
+  height: 50px;
+  text-align: center;
+}
+
+div.sales header .search form {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  transition: 0.5s;
+}
+
+div.sales header .search form.active {
+  width: 100%;
+  transition: 0.5s;
+}
+
+div.sales header .search form input {
+  border: none;
+}
+
+div.sales header .search form input[type="search"] {
+  width: 100%;
+  box-sizing: border-box;
+  height: 30px;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 100;
+  padding: 0 30px 0 5px;
+  -webkit-appearance: none;
+  outline-color: #27ae60;
+}
+
+div.sales header .search form input[type="submit"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 36px;
+  height: 30px;
+  margin-top: 10px;
+  cursor: pointer;
+  background: url(https://lh4.googleusercontent.com/-b-5aBxcxarY/UAfFW9lVyjI/AAAAAAAABUg/gQtEXuPuIds/s13/go.png) 50% no-repeat;
+}
+
+div.sales header .login {
+  text-align: center;
+}
+
+div.sales header .login span {
+  color: #fff;
+  line-height: 50px;
+  font-weight: 100;
+  font-size: 18px;
+}
+
+div.sales .sales-list {
+  background: #f9f9f9;
+}
+
+div.sales .sales-list .sales-list-item {
+  padding: 15px 0;
+  border-top: 1px solid #e2e2e2;
+}
+
+div.sales .sales-list .sales-list-item:first-child {
+  border: none;
+}
+
+div.sales .sales-list .sales-list-item img {
+  width: 15%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+div.sales .sales-list .sales-list-item .sale-shop-info {
+  display: inline-block;
+  width: calc(65% - 7px);
+  padding-right: 15px;
+}
+
+div.sales .sales-list .sales-list-item .sale-shop-info h3 {
+  margin: 0 0 10px 0;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 400;
+}
+
+div.sales .sales-list .sales-list-item .sale-shop-info p {
+  vertical-align: top;
+  margin-left: 15px;
+}
+
+div.sales .sales-list .sales-list-item .sale-info {
+  width: 20%;
+  display: inline-block;
+  text-align: center;
+  border-left: 1px solid #e2e2e2;
+  vertical-align: top;
+}
+
+div.sales .sales-list .sales-list-item .sale-info span {
+  font-weight: 100;
+  font-size: 24px;
+}
+
+div.sales .sales-list .sales-list-item .sale-info span b {
+  color: #27ae60;
+  font-size: 30px;
+}
+
+div.sales .sales-list .sales-list-item .sale-info small {
+  display: block;
+}
+
+div.sales .sales-list .sales-list-item .sale-info small b {
+  font-size: 12px;
+}
+
+div.sales .sales-list .sales-list-item .sale-info button {
+  background-color: #27ae60;
+  border-color: #27ae60;
+  margin-top: 10px;
+  transition: 0.5s;
+}
+
+div.sales .sales-list .sales-list-item .sale-info button:hover {
+  background-color: #2ecc71;
+  transition: 0.5s;
+}
+
 footer {
   height: 20px;
   color: #C5C5C5;

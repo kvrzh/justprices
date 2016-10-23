@@ -8,9 +8,10 @@
  */
 class MY_Controller extends CI_Controller
 {
-    public function _view($view){
+    public function _view($view, $data = null)
+    {
         $this->load->view('default/assets');
-        $this->load->view($view);
+        $this->load->view($view, $data);
         $this->load->view('default/footer');
     }
 }
