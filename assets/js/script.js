@@ -3,7 +3,8 @@ $(document).ready(function () {
     resizeSearch();
     setTimeout(function () {
         setPadding()
-    }, 500);
+    }, 200);
+
     $(window).resize(function () {
         setPadding();
         resizeSearch();

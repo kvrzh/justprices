@@ -17,9 +17,10 @@
             <span>You can't see me - my time is now!</span>
         </div>
     </header>
-    <?php foreach ($sales as $sale) ?>
     <div class="sales-list col-md-12 col-lg-8 col-lg-offset-2">
-        <div class="sales-list-item">
+        <?php foreach ($sales as $sale): ?>
+
+            <div class="sales-list-item" onload="setPadding()">
             <img src="<?= img_url('logos/' . $sale['image']) ?>">
             <div class="sale-shop-info">
                 <h3><?= $sale['name'] ?></h3>
@@ -31,6 +32,8 @@
                 <button class="btn btn-success">Подробнее</button>
             </div>
         </div>
+
+        <?php endforeach; ?>
     </div>
 </div>
 
