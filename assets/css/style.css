@@ -5810,11 +5810,13 @@ button.close {
 body {
   background: url(../images/bg.jpg) #161616;
   font-family: "Roboto", sans-serif;
-  background-size: cover; }
+  background-size: cover;
+  overflow: hidden;
+}
 
 div.main, div.sales {
-  min-height: calc(100vh - 20px);
-  overflow-y: hidden; }
+  min-height: calc(100vh - 30px);
+}
   div.main div.name, div.sales div.name {
     min-height: calc(100vh - 180px); }
     div.main div.name h1, div.sales div.name h1 {
@@ -5888,6 +5890,9 @@ div.main, div.sales {
         display: inline-block;
         margin: 0 15px; }
 
+div.sales div {
+  transition: width 0.5s;
+}
 div.sales header {
   height: 50px;
   background-color: #000;
@@ -5897,6 +5902,14 @@ div.sales header .logo {
   height: 50px;
 }
 
+div.sales header .logo .menu-search {
+  height: 50px;
+  line-height: 50px;
+  color: #fff;
+  font-size: 25px;
+  cursor: pointer;
+}
+
 div.sales header .logo img {
   height: 30px;
   margin-top: 10px;
@@ -5904,18 +5917,18 @@ div.sales header .logo img {
   display: inline-block;
 }
 
-div.sales header .logo div {
+div.sales header .logo div.social_header {
   text-align: center;
   padding-left: 30px;
 }
 
-@media only screen and (max-width: 1100px) {
-  div.sales header .logo div {
+@media only screen and (max-width: 1200px) {
+  div.sales header .logo div.social_header {
     display: none;
   }
 }
 
-div.sales header .logo div a {
+div.sales header .logo div.social_header a {
   display: inline-block;
   height: 50px;
   line-height: 50px;
@@ -5925,7 +5938,7 @@ div.sales header .logo div a {
   transition: 0.3s;
 }
 
-div.sales header .logo div a:hover {
+div.sales header .logo div.social_header a:hover {
   color: #27ae60;
   transition: 0.3s;
 }
@@ -5984,8 +5997,67 @@ div.sales header .login span {
   font-weight: 100;
   font-size: 18px;
 }
+
+div.sales .filter {
+  padding-top: 2vh;
+}
+
+div.sales .filter.mob {
+  position: fixed;
+  z-index: 5;
+  background: #000;
+  height: calc(100vh - 50px);
+  opacity: 0;
+}
+
+div.sales .filter div.filter-item {
+  text-align: center;
+  margin: 10px 0;
+}
+
+div.sales .filter div.filter-item label {
+  color: #fff;
+  font-weight: 100;
+  font-size: 16px;
+}
+
+div.sales .filter div.filter-item select {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-family: inherit;
+  padding: 2px;
+  width: 90%;
+}
+
+div.sales .filter span {
+  color: #e8e8e8;
+  text-align: center;
+  display: block;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+div.sales .filter button {
+  margin: 15px auto 10px auto;
+  display: block;
+  background-color: #27ae60;
+  transition: 0.3s;
+  border: #27ae60;
+  width: 90%;
+}
+
+div.sales .filter button:hover {
+  transition: 0.3s;
+  background: #2ecc71;
+}
 div.sales .sales-list {
   background: #f9f9f9;
+  max-height: calc(100vh - 50px);
+  padding-right: 0;
+}
+
+div.sales .sales-list #mCSB_1_scrollbar_vertical {
+  margin: 15px 0;
 }
 
 div.sales .sales-list .sales-list-item {
@@ -6062,6 +6134,9 @@ div.sales .sales-list .sales-list-item .sale-info button:hover {
 footer {
   height: 20px;
   color: #C5C5C5;
-  text-align: center; }
+  text-align: center;
+  display: block;
+  clear: both;
+}
 
 /*# sourceMappingURL=style.css.map */

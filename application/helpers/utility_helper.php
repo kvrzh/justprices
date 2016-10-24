@@ -5,9 +5,9 @@
  * Date: 29.09.2016
  * Time: 22:45
  */
-function assets_url()
+function assets_url($file = '')
 {
-    return base_url() . 'assets/';
+    return base_url() . 'assets/' . $file;
 }
 
 function css_url($file)
