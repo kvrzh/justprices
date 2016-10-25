@@ -324,6 +324,14 @@ div.sales{
       }
 
     }
+    div.sale_item_details{
+      height: calc(100vh - 50px);
+      text-align: center;
+      i.fa-spinner{
+        margin-top: calc(50vh - 25px);
+        font-size: 50px;
+      }
+    }
   }
 }
 footer{

@@ -16,11 +16,21 @@ class Sales_model extends CI_Model
     public function getSales()
     {
         $this->db->select('*');
-        $this->db->join('shops', 'sales.shop=shops.id', 'inner');
+        $this->db->join('shops', 'shops.id=sales.shop', 'inner');
         $query = $this->db->get('sales');
         foreach ($query->result_array() as $row) {
             $result[] = $row;
         }
         return $result;
+    }
+    public function getSaleById($id){
+        $this->db->select('*');
+        $this->db->join('shops', 'shops.id=sales.shop', 'inner');
+        $this->db->where('sales_id', $id);
+        $query = $this->db->get('sales');
+        if ($query->row('id')) {
+            $sale = $query->row();
+        }
+        return $sale;
     }
 }

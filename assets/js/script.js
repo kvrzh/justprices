@@ -4,6 +4,7 @@ $(document).ready(function () {
     });
     showMenu();
     resizeSearch();
+    loadSale();
     setTimeout(function () {
         setPadding()
     }, 200);
@@ -101,4 +102,12 @@ function resizeSales() {
             $('div.filter').removeClass('col-md-8').addClass('col-md-12');
         }
     }
+}
+function loadSale(){
+    $('.sales-list-item button').click(function(){
+        var id = $(this).parent().find('input[name = "sales_id"]').attr('value');
+        var url = 'sales/sale/'+id;
+        $('.sales-list').html('<div class="sale_item_details"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
+        $('div.sale_item_details').load(url);
+    })
 }

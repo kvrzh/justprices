@@ -49,6 +49,7 @@
                     <p><?= $sale['description'] ?></p>
                 </div>
                 <div class="sale-info">
+                    <input name="sales_id" type="hidden" value="<?=$sale['sales_id'] ?>">
                     <span>Скидка<br><b><?= $sale['sale'] ?></b></span>
                     <small>Действует до<br><b><?= $sale['date'] ?></b></small>
                     <button class="btn btn-success">Подробнее</button>

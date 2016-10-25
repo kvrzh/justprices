@@ -18,4 +18,8 @@ class Sales extends MY_Controller
         $data['sales'] = $this->Sales_model->getSales();
         $this->_view('sales/main', $data);
     }
+    function sale($id){
+        $data['sale'] = $this->Sales_model->getSaleById($id);
+        $this->load->view('sales/sale',$data);
+    }
 }
