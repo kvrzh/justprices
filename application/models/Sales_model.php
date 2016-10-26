@@ -28,6 +28,7 @@ class Sales_model extends CI_Model
         $this->db->join('shops', 'shops.id=sales.shop', 'inner');
         $this->db->where('sales_id', $id);
         $query = $this->db->get('sales');
+        $sale = array();
         if ($query->row('id')) {
             $sale = $query->row();
         }

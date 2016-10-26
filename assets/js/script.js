@@ -3,6 +3,8 @@ $(document).ready(function () {
         theme: "dark"
     });
     showMenu();
+    var elem = $('.sale_item_details i');
+
     resizeSearch();
     loadSale();
     setTimeout(function () {
@@ -106,8 +108,26 @@ function resizeSales() {
 function loadSale(){
     $('.sales-list-item button').click(function(){
         var id = $(this).parent().find('input[name = "sales_id"]').attr('value');
-        var url = 'sales/sale/'+id;
-        $('.sales-list').html('<div class="sale_item_details"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
-        $('div.sale_item_details').load(url);
+        var url = '/sales/sale/'+id;
+        history.pushState('', '', url);
+        $('.sales-list').html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
+        $('div.sales-list').load(url,{js:'true'});
     })
+}
+
+function loadSaleList(){
+    $('.sale_item_details i').click(function () {
+        var url = '/sales';
+        history.pushState('', '', url);
+        $('.sales-list').html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
+        $('div.sales-list').load(url, {js: 'true'}, function () {
+            $(".sales-list-load").css({
+                'max-height': 'calc(100vh - 50px)'
+            });
+            $(".sales-list-load").mCustomScrollbar({
+                theme: "dark"
+            });
+            $('.sales-list').mCustomScrollbar("destroy");
+        });
+    });
 }

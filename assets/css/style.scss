@@ -8,6 +8,9 @@ $footer-height:20px;
 html {
 
 }
+div.fix{
+  clear: both;
+}
 body{
 
   background:url(../images/bg.jpg) $background-color;
@@ -261,9 +264,10 @@ div.sales{
     background: #f9f9f9;
     max-height: calc(100vh - 50px);
     padding-right: 0;
-    #mCSB_1_scrollbar_vertical {
+    .mCSB_scrollTools {
       margin: 15px 0;
     }
+
     .sales-list-item {
       padding: 15px 0;
       border-top: 1px solid #e2e2e2;
@@ -322,14 +326,68 @@ div.sales{
           }
         }
       }
-
+    }
+    div.sale_spin{
+      height: calc(100vh - 50px);
+      text-align: center;
+      padding-right:15px;
+      i.fa-spinner{
+        margin-top: calc(50vh - 25px);
+        font-size: 50px;
+      }
     }
     div.sale_item_details{
       height: calc(100vh - 50px);
       text-align: center;
-      i.fa-spinner{
-        margin-top: calc(50vh - 25px);
-        font-size: 50px;
+      padding-right:15px;
+      >i{
+        position: absolute;
+        right: 3%;
+        top: 20px;
+        font-size: 30px;
+        cursor: pointer;
+      }
+      >h1{
+        font-size: 40px;
+        color: #000;
+        font-weight: 100;
+        margin-top:0;
+        padding-top: 20px;
+        >b{
+          color: $green-color;
+          font-weight: 400;
+        }
+      }
+      >span{
+        display: block;
+        font-size: 24px;
+        font-weight: 100;
+      }
+      >img{
+        display: inline-block;
+        width: 20%;
+      }
+      >p{
+        display: inline-block;
+        width: calc(80% - 7px);
+        text-align: justify;
+        padding: 0 2%;
+      }
+      >div.sale_terms{
+        margin-top: 20px;
+        border-top: 1px solid #cbcbcb;
+        p{
+          text-align: justify;
+          padding: 0 2%;
+          margin-bottom: 20px;
+        }
+      }
+      >div.sale_date{
+        margin-top: 20px;
+        border-top: 1px solid #cbcbcb;
+        span{
+          display: block;
+        }
       }
     }
   }

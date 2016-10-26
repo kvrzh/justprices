@@ -13,13 +13,33 @@ class Sales extends MY_Controller
         parent::__construct();
         $this->load->model(array('Sales_model'));
     }
-
     function index(){
         $data['sales'] = $this->Sales_model->getSales();
-        $this->_view('sales/main', $data);
+        if(isset($_POST['js']) && $_POST['js'] == true){
+            $this->load->view('sales/sales-list',$data);
+        }else{
+            $this->viewSale('sales-list',$data);
+        }
+    }
+
+    function viewSale($view,$data = null){
+        $this->load->view('default/assets');
+        $this->load->view('sales/main');
+        $this->load->view('sales/'.$view,$data);
+        $this->load->view('sales/endsale');
+        $this->load->view('default/footer');
+    }
+    function test(){
+        $data['sales'] = $this->Sales_model->getSales();
+        $this->_view('sales/sales-list',$data);
     }
     function sale($id){
         $data['sale'] = $this->Sales_model->getSaleById($id);
-        $this->load->view('sales/sale',$data);
+        $data['sale']->address = explode(';',$data['sale']->address);
+        if(isset($_POST['js']) && $_POST['js'] == true){
+            $this->load->view('sales/sale',$data);
+        }else{
+            $this->viewSale('sale',$data);
+        }
     }
 }

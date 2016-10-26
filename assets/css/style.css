@@ -5807,6 +5807,9 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+div.fix {
+  clear: both; }
+
 body {
   background: url(../images/bg.jpg) #161616;
   font-family: "Roboto", sans-serif;
@@ -6003,7 +6006,7 @@ div.sales .sales-list {
   background: #f9f9f9;
   max-height: calc(100vh - 50px);
   padding-right: 0; }
-  div.sales .sales-list #mCSB_1_scrollbar_vertical {
+  div.sales .sales-list .mCSB_scrollTools {
     margin: 15px 0; }
   div.sales .sales-list .sales-list-item {
     padding: 15px 0;
@@ -6050,12 +6053,56 @@ div.sales .sales-list {
         div.sales .sales-list .sales-list-item .sale-info button:hover {
           background-color: #2ecc71;
           transition: 0.5s; }
-  div.sales .sales-list div.sale_item_details {
+  div.sales .sales-list div.sale_spin {
     height: calc(100vh - 50px);
-    text-align: center; }
-    div.sales .sales-list div.sale_item_details i.fa-spinner {
+    text-align: center;
+    padding-right: 15px; }
+    div.sales .sales-list div.sale_spin i.fa-spinner {
       margin-top: calc(50vh - 25px);
       font-size: 50px; }
+  div.sales .sales-list div.sale_item_details {
+    height: calc(100vh - 50px);
+    text-align: center;
+    padding-right: 15px; }
+    div.sales .sales-list div.sale_item_details > i {
+      position: absolute;
+      right: 3%;
+      top: 20px;
+      font-size: 30px;
+      cursor: pointer; }
+    div.sales .sales-list div.sale_item_details > h1 {
+      font-size: 40px;
+      color: #000;
+      font-weight: 100;
+      margin-top: 0;
+      padding-top: 20px; }
+      div.sales .sales-list div.sale_item_details > h1 > b {
+        color: #27ae60;
+        font-weight: 400; }
+    div.sales .sales-list div.sale_item_details > span {
+      display: block;
+      font-size: 24px;
+      font-weight: 100; }
+    div.sales .sales-list div.sale_item_details > img {
+      display: inline-block;
+      width: 20%; }
+    div.sales .sales-list div.sale_item_details > p {
+      display: inline-block;
+      width: calc(80% - 7px);
+      text-align: justify;
+      padding: 0 2%; }
+    div.sales .sales-list div.sale_item_details > div.sale_terms {
+      margin-top: 20px;
+      border-top: 1px solid #cbcbcb; }
+      div.sales .sales-list div.sale_item_details > div.sale_terms p {
+        text-align: justify;
+        padding: 0 2%;
+        margin-bottom: 20px; }
+    div.sales .sales-list div.sale_item_details > div.sale_date {
+      margin-top: 20px;
+      border-top: 1px solid #cbcbcb; }
+      div.sales .sales-list div.sale_item_details > div.sale_date span {
+        display: block; }
 
 footer {
   height: 20px;
