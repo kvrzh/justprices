@@ -6011,6 +6011,10 @@ div.sales .sales-list {
   background: #f9f9f9;
   max-height: calc(100vh - 50px);
   padding-right: 0; }
+  div.sales .sales-list div.sales-list-load h1 {
+    text-align: center;
+    border-bottom: 1px solid #c3c3c3;
+    padding-bottom: 15px; }
   div.sales .sales-list .mCSB_scrollTools {
     margin: 15px 0; }
   div.sales .sales-list div.filter_error {
@@ -6042,11 +6046,11 @@ div.sales .sales-list {
       div.sales .sales-list div.filter_error button:hover {
         background: #2ecc71;
         transition: 0.3s; }
+  div.sales .sales-list .sales-list-item:nth-child(2) {
+    border: none; }
   div.sales .sales-list .sales-list-item {
     padding: 15px 0;
     border-top: 1px solid #e2e2e2; }
-    div.sales .sales-list .sales-list-item:first-child {
-      border: none; }
     div.sales .sales-list .sales-list-item img {
       width: 15%;
       display: inline-block;

@@ -270,6 +270,14 @@ div.sales{
     background: #f9f9f9;
     max-height: calc(100vh - 50px);
     padding-right: 0;
+    div.sales-list-load{
+      h1{
+        text-align: center;
+        border-bottom: 1px solid #c3c3c3;
+        padding-bottom: 15px;
+      }
+
+    }
     .mCSB_scrollTools {
       margin: 15px 0;
     }
@@ -307,12 +315,13 @@ div.sales{
         }
       }
     }
+    .sales-list-item:nth-child(2) {
+      border: none;
+    }
     .sales-list-item {
       padding: 15px 0;
       border-top: 1px solid #e2e2e2;
-      &:first-child {
-        border: none;
-      }
+
       img {
         width: 15%;
         display: inline-block;
@@ -364,7 +373,9 @@ div.sales{
             transition: 0.5s;
           }
         }
+
       }
+
     }
     div.sale_spin{
       height: calc(100vh - 50px);

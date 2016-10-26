@@ -6,6 +6,7 @@
     });
 </script>
 <div class="sales-list-load">
+    <h1><?=$city ?></h1>
     <?php if($sales == false): ?>
         <div class="filter_error">
             <h2>Извините, по запросу не было найдено ни одной скидки.</h2>

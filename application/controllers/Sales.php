@@ -15,8 +15,13 @@ class Sales extends MY_Controller
     }
     function index(){
         $data['sales'] = $this->Sales_model->getSales(1);
+        $data['city'] = "Киев";
         if(isset($_POST['result'])){
             $result = $_POST['result'];
+            foreach($result as $item){
+                $res[$item['name']] = $item['value'];
+            }
+            $data['city'] = decode_encode_city((int)$res['city']);
             $data['sales'] = $this->Sales_model->getFilterSales($result);
         }
         if(!$data['sales']){
