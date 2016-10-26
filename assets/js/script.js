@@ -4,14 +4,14 @@ $(document).ready(function () {
     });
     showMenu();
     var elem = $('.sale_item_details i');
-
+    search();
     resizeSearch();
     loadSale();
     setTimeout(function () {
         setPadding()
     }, 200);
-    $('.filter>span').click(function(){
-       resetFilter();
+    $('.filter>span').click(function () {
+        resetFilter();
     });
     $(window).resize(function () {
         setPadding();
@@ -133,6 +133,7 @@ function loadSaleList() {
             $(".sales-list-load").mCustomScrollbar({
                 theme: "dark"
             });
+            setPadding();
             $('.sales-list').mCustomScrollbar("destroy");
         });
     });
@@ -143,7 +144,7 @@ function filter() {
         result1 = filterSmth('category');
         var url = '/sales';
         $('.sales-list').html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
-        $('div.sales-list').load(url,{js:true,'result':[result,result1]}, function () {
+        $('div.sales-list').load(url, {js: true, 'result': [result, result1]}, function () {
             $(".sales-list-load").css({
                 'max-height': 'calc(100vh - 50px)'
             });
@@ -158,13 +159,28 @@ function filterSmth(filter) {
     var elem = $('.filter select[name = ' + filter + '] option:selected');
     var optionId = $(elem).val();
     var result = {
-        'name' : filter,
-        'value' : optionId
+        'name': filter,
+        'value': optionId
     };
     return result;
 }
-function resetFilter(){
+function resetFilter() {
     var val = 0;
-    $('.filter select option[value="'+val+'"]').prop('selected', true);
+    $('.filter select option[value="' + val + '"]').prop('selected', true);
 
+}
+function search() {
+    $("#search").keyup(function () {
+        if($(this).val().length>3){
+            $.get('sales/search',{'query':$(this).val()},function(data){
+                data = eval('('+data+')');//json data. array of strings
+                if(data.length!=undefined && data.length>0){
+                    $("#search_advice_wrapper").html('');
+                    for(i in data){
+                        $("#search_advice_wrapper").append('<div class="advice_variant">'+data[i]+'</div>');
+                    }
+                }
+            });
+        }
+    });
 }

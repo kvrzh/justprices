@@ -51,4 +51,14 @@ class Sales_model extends CI_Model
         }
         return $sale;
     }
+    public function liveSearch($search){
+        $result = false;
+        $this->db->select('name');
+        $this->db->like('name', $search);
+        $query = $this->db->get('shops');
+        foreach($query->result_array() as $row){
+            $result[] = $row;
+        }
+        return $result;
+    }
 }

@@ -3,7 +3,7 @@
         <div class="logo col-lg-4 col-md-4 col-sm-6 col-xs-6 col-lg-offset-0 col-md-offset-0 ">
             <div class="menu-search col-md-2 col-sm-2 col-xs-2 hidden-lg"><i class="fa fa-search"
                                                                              aria-hidden="true"></i></div>
-            <img class="img-responsive col-lg-6" src="<?= img_url('logo.png'); ?>">
+            <a href="/"><img class="img-responsive col-lg-6" src="<?= img_url('logo.png'); ?>"></a>
             <div class="social_header col-lg-6">
                 <a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
@@ -11,9 +11,10 @@
         </div>
         <div class="search col-lg-4 col-md-4 col-sm-6 col-xs-6">
             <form action="" method="post" class="search">
-                <input type="search" name="" placeholder="Поиск" class="input"/>
+                <input type="search" name="search" placeholder="Поиск" id="search" class="input"/>
                 <input type="submit" name="" value="" class="submit"/>
             </form>
+            <div id="search_advice_wrapper">Начните вводить запрос</div>
         </div>
         <div class="login col-lg-4 col-md-4 hidden-sm hidden-xs">
             <span>You can't see me - my time is now!</span>

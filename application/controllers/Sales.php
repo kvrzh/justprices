@@ -54,4 +54,10 @@ class Sales extends MY_Controller
             $this->viewSale('sale',$data);
         }
     }
+    function search(){
+        $search = $_GET['query'];
+        $result = $this->Sales_model->liveSearch($search);
+        $result = json_encode($result);
+        print_r($result);
+    }
 }

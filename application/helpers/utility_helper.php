@@ -71,3 +71,26 @@ function decode_encode_city($elem){
         }
     }
 }
+function decode_encode_category($elem){
+    if(gettype($elem) == "integer"){
+        switch ($elem){
+            case 0: return "Все категории";
+                break;
+            case 1: return "Магазины одежды";
+                break;
+            case 2: return "Рестораны и кафе";
+                break;
+            default: return "Магазины одежды";
+        }
+    }else{
+        switch($elem){
+            case "Все категории": return 0;
+                break;
+            case "Магазины одежды": return 1;
+                break;
+            case "Рестораны и кафе": return 2;
+                break;
+            default: return 1;
+        }
+    }
+}
