@@ -14,7 +14,14 @@ class Sales extends MY_Controller
         $this->load->model(array('Sales_model'));
     }
     function index(){
-        $data['sales'] = $this->Sales_model->getSales();
+        $data['sales'] = $this->Sales_model->getSales(1);
+        if(isset($_POST['result'])){
+            $result = $_POST['result'];
+            $data['sales'] = $this->Sales_model->getFilterSales($result);
+        }
+        if(!$data['sales']){
+            $data['sales'] = false;
+        }
         if(isset($_POST['js']) && $_POST['js'] == true){
             $this->load->view('sales/sales-list',$data);
         }else{

@@ -22,15 +22,15 @@
     <div class="filter col-lg-2 hidden-md hidden-sm hidden-xs">
         <div class="filter-item">
             <label for="city">Выберите город:</label>
-            <select>
-                <option value="0" disabled>Город</option>
+            <select name="city">
+                <option disabled>Город</option>
                 <option selected value="1">Киев</option>
                 <option value="2">Львов</option>
             </select>
         </div>
         <div class="filter-item">
             <label for="category">Выберите категорию:</label>
-            <select>
+            <select name="category">
                 <option value="0">Все категории</option>
                 <option selected value="1">Магазины одежды</option>
                 <option value="2">Рестораны и кафе</option>

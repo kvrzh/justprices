@@ -52,3 +52,22 @@ function decode_type($type)
     }
     return $type;
 }
+function decode_encode_city($elem){
+    if(gettype($elem) == "integer"){
+        switch ($elem){
+            case 1: return "Киев";
+            break;
+            case 2: return "Львов";
+            break;
+            default: return "Киев";
+        }
+    }else{
+        switch($elem){
+            case "Киев": return 1;
+            break;
+            case "Львов": return 2;
+            break;
+            default: return 1;
+        }
+    }
+}

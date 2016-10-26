@@ -13,9 +13,26 @@ class Sales_model extends CI_Model
         parent::__construct();
     }
 
-    public function getSales()
+    public function getSales($city)
     {
         $this->db->select('*');
+        $this->db->join('shops', 'shops.id=sales.shop', 'inner');
+        $this->db->where('city',$city);
+        $query = $this->db->get('sales');
+        foreach ($query->result_array() as $row) {
+            $result[] = $row;
+        }
+        return $result;
+    }
+    public function getFilterSales($array)
+    {
+        $result = false;
+        $this->db->select('*');
+        foreach($array as $item){
+            if($item['value']!=0){
+                $this->db->where($item['name'],$item['value']);
+            }
+        }
         $this->db->join('shops', 'shops.id=sales.shop', 'inner');
         $query = $this->db->get('sales');
         foreach ($query->result_array() as $row) {

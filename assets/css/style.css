@@ -5991,7 +5991,12 @@ div.sales .filter {
     text-align: center;
     display: block;
     margin: 10px 0;
-    cursor: pointer; }
+    cursor: pointer;
+    font-weight: 100;
+    transition: 0.3s; }
+    div.sales .filter span:hover {
+      transition: 0.3s;
+      font-weight: 400; }
   div.sales .filter button {
     margin: 15px auto 10px auto;
     display: block;
@@ -6008,6 +6013,35 @@ div.sales .sales-list {
   padding-right: 0; }
   div.sales .sales-list .mCSB_scrollTools {
     margin: 15px 0; }
+  div.sales .sales-list div.filter_error {
+    min-height: 50vh;
+    padding-right: 15px;
+    text-align: center; }
+    div.sales .sales-list div.filter_error h2 {
+      text-align: center;
+      font-size: 30px;
+      font-weight: 100;
+      padding-top: 5vh; }
+    div.sales .sales-list div.filter_error i {
+      font-size: 60px;
+      text-align: center;
+      margin: 0 auto;
+      border: 1px solid;
+      padding: 20px 35px;
+      color: #fff;
+      background: #e74c3c;
+      margin-top: 20px; }
+    div.sales .sales-list div.filter_error button {
+      background: #27ae60;
+      border: #27ae60;
+      transition: 0.3s;
+      display: block;
+      margin: 30px auto;
+      width: 40%;
+      font-size: 16px; }
+      div.sales .sales-list div.filter_error button:hover {
+        background: #2ecc71;
+        transition: 0.3s; }
   div.sales .sales-list .sales-list-item {
     padding: 15px 0;
     border-top: 1px solid #e2e2e2; }

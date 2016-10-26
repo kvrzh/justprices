@@ -10,13 +10,15 @@ $(document).ready(function () {
     setTimeout(function () {
         setPadding()
     }, 200);
-
+    $('.filter>span').click(function(){
+       resetFilter();
+    });
     $(window).resize(function () {
         setPadding();
         resizeSearch();
         resizeSales();
     });
-
+    filter();
 });
 function setPadding() {
     var divListItem = $('div.sales-list-item').height();
@@ -105,20 +107,24 @@ function resizeSales() {
         }
     }
 }
-function loadSale(){
-    $('.sales-list-item button').click(function(){
+function loadSale() {
+    $('.sales-list-item button').click(function () {
         var id = $(this).parent().find('input[name = "sales_id"]').attr('value');
-        var url = '/sales/sale/'+id;
-        history.pushState('', '', url);
+        var url = '/sales/sale/' + id;
+        if (url != window.location) {
+            window.history.pushState(null, null, url);
+        }
         $('.sales-list').html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
-        $('div.sales-list').load(url,{js:'true'});
+        $('div.sales-list').load(url, {js: 'true'});
     })
 }
 
-function loadSaleList(){
+function loadSaleList() {
     $('.sale_item_details i').click(function () {
         var url = '/sales';
-        history.pushState('', '', url);
+        if (url != window.location) {
+            window.history.pushState(null, null, url);
+        }
         $('.sales-list').html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
         $('div.sales-list').load(url, {js: 'true'}, function () {
             $(".sales-list-load").css({
@@ -130,4 +136,35 @@ function loadSaleList(){
             $('.sales-list').mCustomScrollbar("destroy");
         });
     });
+}
+function filter() {
+    $('.filter button').click(function () {
+        result = filterSmth('city');
+        result1 = filterSmth('category');
+        var url = '/sales';
+        $('.sales-list').html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
+        $('div.sales-list').load(url,{js:true,'result':[result,result1]}, function () {
+            $(".sales-list-load").css({
+                'max-height': 'calc(100vh - 50px)'
+            });
+            $(".sales-list-load").mCustomScrollbar({
+                theme: "dark"
+            });
+            $('.sales-list').mCustomScrollbar("destroy");
+        });
+    });
+}
+function filterSmth(filter) {
+    var elem = $('.filter select[name = ' + filter + '] option:selected');
+    var optionId = $(elem).val();
+    var result = {
+        'name' : filter,
+        'value' : optionId
+    };
+    return result;
+}
+function resetFilter(){
+    var val = 0;
+    $('.filter select option[value="'+val+'"]').prop('selected', true);
+
 }
