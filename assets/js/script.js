@@ -147,11 +147,11 @@ function loadSaleList() {
 function filter() {
     $('.filter button').click(function () {
         $('#search').val('');
-        result = filterSmth('city');
-        result1 = filterSmth('category');
+        city = filterSmth('city');
+        category = filterSmth('category');
         var url = '/sales';
         $('.sales-list').html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
-        $('div.sales-list').load(url, {js: true, 'result': [result, result1]}, function () {
+        $('div.sales-list').load(url, {js: true, 'result': [city, category]}, function () {
             $(".sales-list-load").css({
                 'max-height': 'calc(100vh - 50px)'
             });
