@@ -5,6 +5,7 @@ $(document).ready(function () {
     showMenu();
     var elem = $('.sale_item_details i');
     search();
+
     resizeSearch();
     loadSale();
     setTimeout(function () {
@@ -19,6 +20,10 @@ $(document).ready(function () {
         resizeSales();
     });
     filter();
+    $('#search_advice_wrapper').find('div').click(function(){
+        alert('qwqwqwqw');
+    });
+
 });
 function setPadding() {
     var divListItem = $('div.sales-list-item').height();
@@ -30,10 +35,14 @@ function helpResizeSearch() {
     $(".search input[type = 'search']")
         .focus(function () {
             $(this).parent().addClass('active');
+            $('div#search_advice_wrapper').css('width','100%');
         })
         .focusout(function () {
             if ($(window).width() >= '1200') {
                 $(this).parent().removeClass('active');
+                $('div#search_advice_wrapper').css('width','80%');
+                $('div.advice_variant').fadeOut(300);
+                $('div.advice_variant').remove();
             }
         });
 }
@@ -170,8 +179,8 @@ function resetFilter() {
 
 }
 function search() {
-    $("#search").keyup(function () {
-        if($(this).val().length>3){
+    $("#search").focus(function () {
+        if($(this).val().length>1){
             $.get('sales/search',{'query':$(this).val()},function(data){
                 data = eval('('+data+')');//json data. array of strings
                 if(data.length!=undefined && data.length>0){
@@ -182,5 +191,26 @@ function search() {
                 }
             });
         }
+    });
+    $("#search").keyup(function () {
+        if($(this).val().length>1){
+            $.get('sales/search',{'query':$(this).val()},function(data){
+                data = eval('('+data+')');//json data. array of strings
+                if(data.length!=undefined && data.length>0){
+                    $("#search_advice_wrapper").html('');
+                    for(i in data){
+                        $("#search_advice_wrapper").append('<div class="advice_variant">'+data[i]+'</div>');
+                    }
+                }
+            });
+        }else if($(this).val().length== 0){
+            $('div.advice_variant').fadeOut(300);
+            $('div.advice_variant').remove();
+        }
+    });
+}
+function searchChoise() {
+    $('div.advice_variant').live('click',function(){
+        alert('qwqwqwqw');
     });
 }

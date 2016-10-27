@@ -5930,6 +5930,22 @@ div.sales header {
   div.sales header .search {
     height: 50px;
     text-align: center; }
+    div.sales header .search div#search_advice_wrapper {
+      position: relative;
+      z-index: 30;
+      top: -10px;
+      width: 80%;
+      margin: 0 auto;
+      border: 1px solid; }
+      div.sales header .search div#search_advice_wrapper div.advice_variant {
+        background-color: #E8E8E8;
+        cursor: pointer;
+        padding: 5px 0;
+        font-weight: 100;
+        transition: 0.3s; }
+        div.sales header .search div#search_advice_wrapper div.advice_variant:hover {
+          background: #27ae60;
+          transition: 0.3s; }
     div.sales header .search form {
       position: relative;
       width: 80%;

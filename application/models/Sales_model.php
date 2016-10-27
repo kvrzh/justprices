@@ -15,6 +15,7 @@ class Sales_model extends CI_Model
 
     public function getSales($city)
     {
+        $result = false;
         $this->db->select('*');
         $this->db->join('shops', 'shops.id=sales.shop', 'inner');
         $this->db->where('city',$city);

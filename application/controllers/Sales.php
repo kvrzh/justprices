@@ -57,7 +57,10 @@ class Sales extends MY_Controller
     function search(){
         $search = $_GET['query'];
         $result = $this->Sales_model->liveSearch($search);
-        $result = json_encode($result);
-        print_r($result);
+        foreach ($result as $item){
+            $res[] = $item['name'];
+        }
+        $res = json_encode($res);
+        echo $res;
     }
 }

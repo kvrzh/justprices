@@ -14,7 +14,7 @@
                 <input type="search" name="search" placeholder="Поиск" id="search" class="input"/>
                 <input type="submit" name="" value="" class="submit"/>
             </form>
-            <div id="search_advice_wrapper">Начните вводить запрос</div>
+            <div id="search_advice_wrapper"></div>
         </div>
         <div class="login col-lg-4 col-md-4 hidden-sm hidden-xs">
             <span>You can't see me - my time is now!</span>
