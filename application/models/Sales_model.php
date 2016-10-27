@@ -13,19 +13,33 @@ class Sales_model extends CI_Model
         parent::__construct();
     }
 
-    public function getSales($city)
+    public function getSales($city, $shop = null)
     {
         $result = false;
         $this->db->select('*');
         $this->db->join('shops', 'shops.id=sales.shop', 'inner');
         $this->db->where('city',$city);
+        if ($shop != null) {
+            $this->db->where('shop', $shop);
+        }
         $query = $this->db->get('sales');
         foreach ($query->result_array() as $row) {
             $result[] = $row;
         }
         return $result;
     }
-    public function getFilterSales($array)
+
+    public function getShopsIdByName($name)
+    {
+        $result = false;
+        $this->db->select('*');
+        $this->db->where('name', $name);
+        $query = $this->db->get('shops');
+        $result = $query->row('id');
+        return $result;
+    }
+
+    public function getFilterSales($array = null)
     {
         $result = false;
         $this->db->select('*');
@@ -59,6 +73,9 @@ class Sales_model extends CI_Model
         $query = $this->db->get('shops');
         foreach($query->result_array() as $row){
             $result[] = $row;
+        }
+        if ($result == false) {
+            return 'Sorry';
         }
         return $result;
     }

@@ -4,6 +4,7 @@ $(document).ready(function () {
     });
     showMenu();
     var elem = $('.sale_item_details i');
+    filterBySearch();
     search();
 
     resizeSearch();
@@ -20,9 +21,6 @@ $(document).ready(function () {
         resizeSales();
     });
     filter();
-    $('#search_advice_wrapper').find('div').click(function(){
-        alert('qwqwqwqw');
-    });
 
 });
 function setPadding() {
@@ -42,7 +40,6 @@ function helpResizeSearch() {
                 $(this).parent().removeClass('active');
                 $('div#search_advice_wrapper').css('width','80%');
                 $('div.advice_variant').fadeOut(300);
-                $('div.advice_variant').remove();
             }
         });
 }
@@ -149,6 +146,7 @@ function loadSaleList() {
 }
 function filter() {
     $('.filter button').click(function () {
+        $('#search').val('');
         result = filterSmth('city');
         result1 = filterSmth('category');
         var url = '/sales';
@@ -188,6 +186,8 @@ function search() {
                     for(i in data){
                         $("#search_advice_wrapper").append('<div class="advice_variant">'+data[i]+'</div>');
                     }
+
+
                 }
             });
         }
@@ -201,6 +201,7 @@ function search() {
                     for(i in data){
                         $("#search_advice_wrapper").append('<div class="advice_variant">'+data[i]+'</div>');
                     }
+                    searchChoise();
                 }
             });
         }else if($(this).val().length== 0){
@@ -208,9 +209,43 @@ function search() {
             $('div.advice_variant').remove();
         }
     });
+
 }
 function searchChoise() {
-    $('div.advice_variant').live('click',function(){
-        alert('qwqwqwqw');
+    $("#search_advice_wrapper div").click(function () {
+        if ($(this).text() != "Извините, нет совпадений") {
+            $('#search').val($(this).text());
+            $('.search input.submit').click();
+        }
+    });
+}
+function filterBySearch() {
+    $("#formsearch").submit(function (e) {
+        return false;
+    });
+    $('#formsearch').submit(function (event) {
+
+        event.preventDefault;
+        var city = filterSmth('city');
+        var category = filterSmth('category');
+        var url = '/sales';
+        var shop = {
+            name: 'shop',
+            value: $('#search').val()
+        };
+        if (url != window.location) {
+            window.history.pushState(null, null, url);
+        }
+        $('.sales-list').html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
+        $('div.sales-list').load(url, {js: 'true', 'result': [city, category, shop]}, function () {
+            $(".sales-list-load").css({
+                'max-height': 'calc(100vh - 50px)'
+            });
+            $(".sales-list-load").mCustomScrollbar({
+                theme: "dark"
+            });
+            setPadding();
+            $('.sales-list').mCustomScrollbar("destroy");
+        });
     });
 }

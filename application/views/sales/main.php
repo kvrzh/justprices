@@ -10,8 +10,8 @@
             </div>
         </div>
         <div class="search col-lg-4 col-md-4 col-sm-6 col-xs-6">
-            <form action="" method="post" class="search">
-                <input type="search" name="search" placeholder="Поиск" id="search" class="input"/>
+            <form action="" id="formsearch" method="post" class="search">
+                <input type="search" autocomplete="off" name="search" placeholder="Поиск" id="search" class="input"/>
                 <input type="submit" name="" value="" class="submit"/>
             </form>
             <div id="search_advice_wrapper"></div>

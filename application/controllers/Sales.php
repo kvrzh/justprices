@@ -13,20 +13,28 @@ class Sales extends MY_Controller
         parent::__construct();
         $this->load->model(array('Sales_model'));
     }
-    function index(){
-        $data['sales'] = $this->Sales_model->getSales(1);
-        $data['city'] = "Киев";
+
+    function index($shop = 0)
+    {
+        $data['city'] = 1;
+        $data['sales'] = $this->Sales_model->getSales(1, $shop);
+        $data['city'] = decode_encode_city((int)$data['city']);
         if(isset($_POST['result'])){
             $result = $_POST['result'];
+            if (isset($result[2]) && $result[2]['name'] == 'shop') {
+                $result[2]['value'] = $this->Sales_model->getShopsIdByName($result[2]['value']);
+            }
             foreach($result as $item){
                 $res[$item['name']] = $item['value'];
             }
             $data['city'] = decode_encode_city((int)$res['city']);
             $data['sales'] = $this->Sales_model->getFilterSales($result);
         }
+
         if(!$data['sales']){
             $data['sales'] = false;
         }
+
         if(isset($_POST['js']) && $_POST['js'] == true){
             $this->load->view('sales/sales-list',$data);
         }else{
@@ -57,10 +65,15 @@ class Sales extends MY_Controller
     function search(){
         $search = $_GET['query'];
         $result = $this->Sales_model->liveSearch($search);
-        foreach ($result as $item){
-            $res[] = $item['name'];
+        if (is_array($result)) {
+            foreach ($result as $item) {
+                $res[] = $item['name'];
+            }
+            $res = json_encode($res);
+            echo $res;
+        } else {
+            echo '["Извините, нет совпадений"]';
         }
-        $res = json_encode($res);
-        echo $res;
+
     }
 }
