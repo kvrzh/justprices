@@ -174,7 +174,6 @@ function filterSmth(filter) {
 function resetFilter() {
     var val = 0;
     $('.filter select option[value="' + val + '"]').prop('selected', true);
-
 }
 function search() {
     $("#search").focus(function () {

@@ -16,9 +16,22 @@ class Sales extends MY_Controller
 
     function index($shop = 0)
     {
-        $data['city'] = 1;
-        $data['sales'] = $this->Sales_model->getSales(1, $shop);
-        $data['city'] = decode_encode_city((int)$data['city']);
+        $default = [
+            "city" => array(
+                "name" => "city",
+                "value" => 2
+            ),
+            "shop" => array(
+                "name" => "shop",
+                "value" => $shop
+            ),
+            "category" => array(
+                "name" => "category",
+                "value" => 0
+            )
+        ];
+        $data['city'] = decode_encode_city((int)$default['city']['value']);
+        $data['sales'] = $this->Sales_model->getFilterSales($default);
         if(isset($_POST['result'])){
             $result = $_POST['result'];
             if (isset($result[2]) && $result[2]['name'] == 'shop') {
@@ -49,9 +62,20 @@ class Sales extends MY_Controller
         $this->load->view('sales/endsale');
         $this->load->view('default/footer');
     }
-    function test(){
-        $data['sales'] = $this->Sales_model->getSales();
-        $this->_view('sales/sales-list',$data);
+
+    function test($shop = 2)
+    {
+        $default = [
+            array(
+                "name" => "city",
+                "value" => 1
+            ),
+            array(
+                "name" => "shop",
+                "value" => $shop
+            )
+        ];
+        print_r($default);
     }
     function sale($id){
         $data['sale'] = $this->Sales_model->getSaleById($id);
