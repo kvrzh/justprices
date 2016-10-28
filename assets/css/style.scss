@@ -19,6 +19,47 @@ body{
   overflow: hidden;
 }
 
+div.admin {
+  min-height: 100vh;
+  background-color: #fff;
+  > form {
+    text-align: center;
+    label {
+      display: block;
+      margin: 5px 0;
+    }
+    input[type="submit"] {
+      display: block;
+      margin: 10px auto;
+    }
+  }
+  h1 {
+    margin: 0;
+    text-align: center;
+    padding-top: 15px;
+  }
+  div.table_sales {
+    > a {
+      display: block;
+      width: 50%;
+      margin: 15px auto;
+    }
+    table {
+      tr {
+        cursor: pointer;
+        td {
+          a {
+            display: block;
+            margin: 10px 0;
+          }
+        }
+        td:last-child {
+          width: 25%;
+        }
+      }
+    }
+  }
+}
 div.main{
   min-height: calc(100vh - 30px);
 
