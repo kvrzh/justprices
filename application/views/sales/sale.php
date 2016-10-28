@@ -7,7 +7,7 @@
 <i class="fa fa-times" aria-hidden="true"></i>
 <h1>Cкидка: <b><?= $sale->sale ?></b></h1>
 <h3><?= $sale->name ?></h3>
-    <span><b><?= decode_encode_category((int)$sale->category) ?></b></span>
+    <span><b><?= decode_encode_category((int)$sale->category_id) ?></b></span>
 <img src="<?=img_url('/logos/'.$sale->image) ?>">
 
 <p><?=$sale->description ?></p>
@@ -19,7 +19,7 @@
     <h3>Действует до:</h3>
     <span><?= $sale->date ?></span>
     <h3>Адрес: </h3>
-    <span><b><?= decode_encode_city((int)$sale->city) ?></b></span>
+    <span><b><?= decode_encode_city((int)$sale->city_id) ?></b></span>
     <?php foreach($sale->address as $address): ?>
     <span><?= $address ?></span>
     <?php endforeach ?>

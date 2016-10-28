@@ -44,16 +44,29 @@ class Sales_model extends CI_Model
         $result = false;
         $this->db->select('*');
         foreach($array as $item){
-            if($item['value']!=0){
+            if ($item['value'] != 0) {
                 $this->db->where($item['name'],$item['value']);
             }
         }
         $this->db->join('shops', 'shops.id=sales.shop', 'inner');
+
         $query = $this->db->get('sales');
         foreach ($query->result_array() as $row) {
             $result[] = $row;
         }
         return $result;
+    }
+
+    public function getTable($table)
+    {
+        $result = false;
+        $this->db->select('*');
+        $query = $this->db->get($table);
+        foreach ($query->result_array() as $row) {
+            $result[] = $row;
+        }
+        return $result;
+
     }
     public function getSaleById($id){
         $this->db->select('*');

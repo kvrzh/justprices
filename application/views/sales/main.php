@@ -25,16 +25,22 @@
             <label for="city">Выберите город:</label>
             <select name="city">
                 <option disabled>Город</option>
-                <option selected value="1">Киев</option>
-                <option value="2">Львов</option>
+                <?php foreach ($cities as $item): ?>
+                    <?php if ($city == $item['city_name']): ?>
+                        <option selected value="<?= $item['city_id'] ?>"><?= $item['city_name'] ?></option>
+                    <?php else: ?>
+                        <option value="<?= $item['city_id'] ?>"><?= $item['city_name'] ?></option>
+                    <?php endif; ?>
+                <?php endforeach; ?>
             </select>
         </div>
         <div class="filter-item">
             <label for="category">Выберите категорию:</label>
             <select name="category">
-                <option value="0">Все категории</option>
-                <option selected value="1">Магазины одежды</option>
-                <option value="2">Рестораны и кафе</option>
+                <option selected value="0">Все категории</option>
+                <?php foreach ($categories as $category): ?>
+                    <option value="<?= $category['category_id'] ?>"><?= $category['category_name'] ?></option>
+                <?php endforeach; ?>
             </select>
         </div>
 

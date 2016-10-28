@@ -19,7 +19,7 @@
             <img src="<?= img_url('logos/' . $sale['image']) ?>">
             <div class="sale-shop-info">
                 <h3><?= $sale['name'] ?></h3>
-                <span><?= decode_encode_category((int)$sale['category']) ?></span>
+                <span><?= decode_encode_category((int)$sale['category_id']) ?></span>
                 <p><?= $sale['description'] ?></p>
             </div>
             <div class="sale-info">

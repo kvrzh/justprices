@@ -149,9 +149,24 @@ function filter() {
         $('#search').val('');
         city = filterSmth('city');
         category = filterSmth('category');
+        this_url = window.location.pathname.split('/');
+        if (this_url[3] !== undefined) {
+            var shop = {
+                name: 'shop',
+                value: this_url[3]
+            };
+        } else {
+            var shop = {
+                name: 'shop',
+                value: 0
+            };
+        }
         var url = '/sales';
+        if (url != window.location) {
+            window.history.pushState(null, null, url);
+        }
         $('.sales-list').html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
-        $('div.sales-list').load(url, {js: true, 'result': [city, category]}, function () {
+        $('div.sales-list').load(url, {js: true, 'result': [city, category, shop]}, function () {
             $(".sales-list-load").css({
                 'max-height': 'calc(100vh - 50px)'
             });
@@ -166,7 +181,7 @@ function filterSmth(filter) {
     var elem = $('.filter select[name = ' + filter + '] option:selected');
     var optionId = $(elem).val();
     var result = {
-        'name': filter,
+        'name': filter + '_id',
         'value': optionId
     };
     return result;
@@ -174,26 +189,28 @@ function filterSmth(filter) {
 function resetFilter() {
     var val = 0;
     $('.filter select option[value="' + val + '"]').prop('selected', true);
+    if ($("#search").val().length > 0) {
+        $("#search").val('');
+    }
+    $('.search input.submit').click();
 }
 function search() {
     $("#search").focus(function () {
         if($(this).val().length>1){
-            $.get('sales/search',{'query':$(this).val()},function(data){
+            $.get('/sales/search', {'query': $(this).val()}, function (data) {
                 data = eval('('+data+')');//json data. array of strings
                 if(data.length!=undefined && data.length>0){
                     $("#search_advice_wrapper").html('');
                     for(i in data){
                         $("#search_advice_wrapper").append('<div class="advice_variant">'+data[i]+'</div>');
                     }
-
-
                 }
             });
         }
     });
     $("#search").keyup(function () {
         if($(this).val().length>1){
-            $.get('sales/search',{'query':$(this).val()},function(data){
+            $.get('/sales/search', {'query': $(this).val()}, function (data) {
                 data = eval('('+data+')');//json data. array of strings
                 if(data.length!=undefined && data.length>0){
                     $("#search_advice_wrapper").html('');
@@ -233,7 +250,7 @@ function filterBySearch() {
             value: $('#search').val()
         };
         if (url != window.location) {
-            window.history.pushState(null, null, url);
+            window.history.pushState(null, null, (url + '/index/' + shop['value']).replace(/ /g, '_'));
         }
         $('.sales-list').html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
         $('div.sales-list').load(url, {js: 'true', 'result': [city, category, shop]}, function () {
