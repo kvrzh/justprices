@@ -17,7 +17,7 @@ class Sales extends MY_Controller
     function index()
     {
         $data['sales'] = $this->Admin_model->getTable('sales');
-        $this->_view('admin/index', $data);
+        $this->_view('admin/sales/index', $data);
     }
 
     function delete($id)
@@ -38,7 +38,7 @@ class Sales extends MY_Controller
         $data['shops'] = $this->Admin_model->getTable('shops', null, false);
         $data['categories'] = $this->Admin_model->getTable('category', null, false);
         $data['cities'] = $this->Admin_model->getTable('city', null, false);
-        $this->_view('admin/add', $data);
+        $this->_view('admin/sales/add', $data);
     }
 
     function edit($id)
@@ -54,7 +54,7 @@ class Sales extends MY_Controller
         $data['categories'] = $this->Admin_model->getTable('category', null, false);
         $data['cities'] = $this->Admin_model->getTable('city', null, false);
         $data['sale'] = $this->Admin_model->getTable('sales', $id, true);
-        $this->_view('admin/edit', $data);
+        $this->_view('admin/sales/edit', $data);
     }
 
 }

@@ -1,5 +1,6 @@
 <div class="admin">
     <h1>Sales</h1>
+    <a href="<?= base_url('admin') ?>">Вернутся</a>
     <div class="table_sales col-md-6 col-lg-12 col-sm-12">
         <a class="btn btn-default" href="/admin/sales/add">Добавить новую запись</a>
         <table class="table table-hover table-condensed table-bordered">

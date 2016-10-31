@@ -4,9 +4,9 @@
  * Created by PhpStorm.
  * User: bizremy
  * Date: 31.10.16
- * Time: 10:46
+ * Time: 12:26
  */
-class Shops extends MY_Controller
+class Cities extends MY_Controller
 {
     function __construct()
     {
@@ -16,27 +16,27 @@ class Shops extends MY_Controller
 
     function index()
     {
-        $data['shops'] = $this->Admin_model->getTable('shops', null, false);
-        $this->_view('admin/shops/index', $data);
+        $data['cities'] = $this->Admin_model->getTable('city', null, false);
+        $this->_view('admin/cities/index', $data);
     }
 
     function delete($id)
     {
-        $this->Admin_model->deleteItem('shops', $id, 'id');
-        redirect('/admin/shops');
+        $this->Admin_model->deleteItem('city', $id, 'city_id');
+        redirect('/admin/cities');
     }
 
     function add()
     {
         if (isset($_POST) && $_POST != null) {
-            $this->Admin_model->addItem('shops', $_POST, 'Магазин успешно добавлен');
+            $this->Admin_model->addItem('city', $_POST, 'Город успешно добавлен');
             $status = $this->session->flashdata('status');
             if (isset($status) && $status != null) {
                 $data['status'] = $status;
             }
-            $this->_view('admin/shops/add', $data);
+            $this->_view('admin/cities/add', $data);
         } else {
-            $this->_view('admin/shops/add');
+            $this->_view('admin/cities/add');
         }
 
     }
@@ -44,13 +44,13 @@ class Shops extends MY_Controller
     function edit($id)
     {
         if (isset($_POST) && $_POST != null) {
-            $this->Admin_model->updateItem('shops', $_POST, $id, 'Магазин успешно обновлен', 'id');
+            $this->Admin_model->updateItem('city', $_POST, $id, 'Город успешно обновлен', 'city_id');
             $status = $this->session->flashdata('status');
             if (isset($status) && $status != null) {
                 $data['status'] = $status;
             }
         }
-        $data['shops'] = $this->Admin_model->getTable('shops', null, false);
-        $this->_view('admin/shops/edit', $data);
+        $data['cities'] = $this->Admin_model->getTable('city', null, false);
+        $this->_view('admin/cities/edit', $data);
     }
 }

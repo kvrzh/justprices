@@ -17,6 +17,15 @@ body{
   font-family: $site-font;
   background-size: cover;
 }
+
+div.admin_menu {
+  min-height: calc(100vh - 20px);
+  text-align: center;
+  padding-top: 30px;
+  a {
+    margin: 0 20px;
+  }
+}
 div.admin {
   div.popup_status {
     text-align: center;
@@ -24,7 +33,7 @@ div.admin {
     font-size: 24px;
     background-color: #fff;
   }
-  min-height: 100vh;
+  min-height: calc(100vh - 20px);
   background-color: #fff;
   > form {
     text-align: center;

@@ -5813,19 +5813,23 @@ div.fix {
 body {
   background: url(../images/bg.jpg) #161616;
   font-family: "Roboto", sans-serif;
-    background-size: cover;
-}
+  background-size: cover; }
+
+div.admin_menu {
+  min-height: calc(100vh - 20px);
+  text-align: center;
+  padding-top: 30px; }
+  div.admin_menu a {
+    margin: 0 20px; }
 
 div.admin {
-  min-height: 100vh;
+  min-height: calc(100vh - 20px);
   background-color: #fff; }
-
-div.admin div.popup_status {
+  div.admin div.popup_status {
     text-align: center;
     color: #27ae60;
     font-size: 24px;
-    background-color: #fff;
-}
+    background-color: #fff; }
   div.admin > form {
     text-align: center; }
     div.admin > form label {
