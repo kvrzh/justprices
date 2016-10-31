@@ -1,7 +1,7 @@
 <div class="admin">
     <h1>Sales</h1>
     <div class="table_sales col-md-6 col-lg-12 col-sm-12">
-        <a class="btn btn-default" href="/admin/add">Добавить новую запись</a>
+        <a class="btn btn-default" href="/admin/sales/add">Добавить новую запись</a>
         <table class="table table-hover table-condensed table-bordered">
             <thead>
             <tr>
@@ -19,8 +19,8 @@
             <tbody>
             <?php foreach ($sales as $sale): ?>
                 <tr>
-                    <td><a class="btn btn-primary" href="/admin/edit/<?= $sale['sales_id'] ?>">Редактировать</a>
-                        <a class="btn btn-danger" href="/admin/delete/<?= $sale['sales_id'] ?>">Удалить</a>
+                    <td><a class="btn btn-primary" href="/admin/sales/edit/<?= $sale['sales_id'] ?>">Редактировать</a>
+                        <a class="btn btn-danger" href="/admin/sales/delete/<?= $sale['sales_id'] ?>">Удалить</a>
                     </td>
                     <td><?= $sale['sales_id'] ?></td>
                     <td><?= $sale['name'] ?></td>
@@ -35,4 +35,6 @@
             </tbody>
         </table>
     </div>
+    <div class="fix"></div>
 </div>
+

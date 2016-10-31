@@ -5813,12 +5813,19 @@ div.fix {
 body {
   background: url(../images/bg.jpg) #161616;
   font-family: "Roboto", sans-serif;
-  background-size: cover;
-  overflow: hidden; }
+    background-size: cover;
+}
 
 div.admin {
   min-height: 100vh;
   background-color: #fff; }
+
+div.admin div.popup_status {
+    text-align: center;
+    color: #27ae60;
+    font-size: 24px;
+    background-color: #fff;
+}
   div.admin > form {
     text-align: center; }
     div.admin > form label {

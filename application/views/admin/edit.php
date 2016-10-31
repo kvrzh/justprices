@@ -1,4 +1,3 @@
-
 <div class="admin">
     <?php if (isset($status)): ?>
         <div class="popup_status">
@@ -10,31 +9,43 @@
     <form action="" method="post">
         <label for="shop">Выберите магазин:</label>
         <select name="shop" required>
-            <option selected disabled>Выберите магазин, в котором скидка</option>
+            <option disabled>Выберите магазин, в котором скидка</option>
             <?php foreach ($shops as $shop): ?>
-                <option value="<?= $shop['id'] ?>"><?= $shop['name'] ?></option>
+                <?php if ($shop['id'] == $sale[0]['shop']): ?>
+                    <option selected value="<?= $shop['id'] ?>"><?= $shop['name'] ?></option>
+                <?php else: ?>
+                    <option value="<?= $shop['id'] ?>"><?= $shop['name'] ?></option>
+                <?php endif; ?>
             <?php endforeach; ?>
         </select>
         <label for="sale">Укажите скидку</label>
-        <input name="sale" type="text" placeholder="Укажите скидку" required>
+        <input name="sale" type="text" placeholder="Укажите скидку" value="<?= $sale[0]['sale'] ?>" required>
         <label for="date">Укажите дату, до которой дествительна скидка</label>
-        <input type="date" name="date" required>
+        <input type="date" name="date" value="<?= $sale[0]['date'] ?>" required>
         <label for="category_id">Выберите категорию скидки:</label>
         <select name="category_id" required>
             <option selected disabled>Выберите категорию скидки</option>
             <?php foreach ($categories as $category): ?>
-                <option value="<?= $category['category_id'] ?>"><?= $category['category_name'] ?></option>
+                <?php if ($category['category_id'] == $sale[0]['category_id']): ?>
+                    <option selected value="<?= $category['category_id'] ?>"><?= $category['category_name'] ?></option>
+                <?php else: ?>
+                    <option value="<?= $category['category_id'] ?>"><?= $category['category_name'] ?></option>
+                <?php endif; ?>
             <?php endforeach; ?>
         </select>
         <label for="city_id">Выберите город:</label>
         <select name="city_id" required>
             <option selected disabled>Выберите город</option>
             <?php foreach ($cities as $city): ?>
-                <option value="<?= $city['city_id'] ?>"><?= $city['city_name'] ?></option>
+                <?php if ($city['city_id'] == $sale[0]['city_id']): ?>
+                    <option selected value="<?= $city['city_id'] ?>"><?= $city['city_name'] ?></option>
+                <?php else: ?>
+                    <option value="<?= $city['city_id'] ?>"><?= $city['city_name'] ?></option>
+                <?php endif; ?>
             <?php endforeach; ?>
         </select>
         <label for="address">Адресс(через ; каждый новый адресс)</label>
-        <input type="text" name="address" required>
+        <input type="text" name="address" value="<?= $sale[0]['address'] ?>" required>
         <input type="submit" class="btn btn-success">
     </form>
 </div>

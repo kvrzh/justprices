@@ -32,9 +32,29 @@ class Admin_model extends CI_Model
         return $result;
     }
 
-    public function deleteItem($table, $id)
+    public function deleteItem($table, $id, $table_id = 'sales_id')
     {
-        $this->db->where('sales_id', $id);
+        $this->db->where($table_id, $id);
         $this->db->delete($table);
+    }
+
+    public function addItem($table, $array, $status = 'Ок')
+    {
+        if (isset($array)) {
+            foreach ($array as $key => $value) {
+                $this->db->set($key, $value);
+            }
+            if ($this->db->insert($table)) {
+                $this->session->set_flashdata('status', $status);
+            }
+        }
+    }
+
+    public function updateItem($table, $array, $id, $status = 'Ок', $table_id = 'sales_id')
+    {
+        $this->db->where($table_id, $id);
+        if ($this->db->update($table, $array)) {
+            $this->session->set_flashdata('status', $status);
+        }
     }
 }
