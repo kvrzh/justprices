@@ -59,6 +59,9 @@ function decode_encode_city($elem){
             break;
             case 2: return "Львов";
             break;
+            case 3:
+                return "Харьков";
+                break;
             default: return "Киев";
         }
     }else{
@@ -66,6 +69,9 @@ function decode_encode_city($elem){
             case "Киев": return 1;
             break;
             case "Львов": return 2;
+                break;
+            case "Харьков":
+                return 3;
             break;
             default: return 1;
         }

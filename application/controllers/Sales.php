@@ -37,7 +37,11 @@ class Sales extends MY_Controller
         ];
         $data['cities'] = $this->Sales_model->getTable('city');
         $data['categories'] = $this->Sales_model->getTable('category');
-        $data['city'] = decode_encode_city((int)$default['city']['value']);
+        if (isset($_SESSION['city'])) {
+            $data['city'] = $_SESSION['city'];
+        } else {
+            $data['city'] = decode_encode_city((int)$default['city']['value']);
+        }
         $data['sales'] = $this->Sales_model->getFilterSales($default);
         if(isset($_POST['result'])){
             $result = $_POST['result'];
@@ -55,7 +59,6 @@ class Sales extends MY_Controller
         if(!$data['sales']){
             $data['sales'] = false;
         }
-
         if(isset($_POST['js']) && $_POST['js'] == true){
             $this->load->view('sales/sales-list',$data);
         }else{
@@ -83,14 +86,21 @@ class Sales extends MY_Controller
                 "value" => $shop
             )
         ];
-        print_r($default);
     }
     function sale($id){
-        $data['sale'] = $this->Sales_model->getSaleById($id);
-        $data['sale']->address = explode(';',$data['sale']->address);
+        $ar = [
+            "sale" => array(
+                "name" => "sales_id",
+                "value" => $id
+            )];
+        $data['sale'] = $this->Sales_model->getFilterSales($ar);
+        $data['sale'][0]['address'] = explode(';', $data['sale'][0]['address']);
+        $_SESSION['city'] = $data['sale'][0]['city_name'];
         if(isset($_POST['js']) && $_POST['js'] == true){
             $this->load->view('sales/sale',$data);
         }else{
+            $data['cities'] = $this->Sales_model->getTable('city');
+            $data['categories'] = $this->Sales_model->getTable('category');
             $this->viewSale('sale',$data);
         }
     }

@@ -30,7 +30,7 @@
                     <td><?= $sale['category_name'] ?></td>
                     <td><?= $sale['city_name'] ?></td>
                     <td><?= $sale['address'] ?></td>
-                    <td><?= $sale['description'] ?></td>
+                    <td><?= $sale['sale_description'] ?></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

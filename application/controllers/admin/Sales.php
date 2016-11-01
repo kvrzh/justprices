@@ -14,17 +14,18 @@ class Sales extends MY_Controller
         $this->load->model(array('Sales_model', 'Admin_model'));
     }
 
-    function _remap($method)
+    function _remap($method, $params = array())
     {
         if ($_SESSION['login'] != true) {
             redirect('/admin');
         } else {
-            $this->$method();
+            return call_user_func_array(array($this, $method), $params);
         }
     }
     function index()
     {
         $data['sales'] = $this->Admin_model->getTable('sales');
+        print_r($data['sales']);
         $this->_view('admin/sales/index', $data);
     }
 
@@ -37,7 +38,16 @@ class Sales extends MY_Controller
     function add()
     {
         if (isset($_POST) && $_POST != null) {
+            $cities = $_POST['cities'];
+            unset($_POST['cities']);
             $this->Admin_model->addItem('sales', $_POST, 'Скидка успешно добавлена');
+            $this_id = $this->Admin_model->getLastIdItem();
+            print_r($this_id->id);
+            foreach ($cities as $city) {
+                $array_cities['sales_id'] = $this_id->id;
+                $array_cities['city_id'] = $city;
+                $this->Admin_model->addItem('sales_city', $array_cities, 'Скидка успешно добавлена');
+            }
             $status = $this->session->flashdata('status');
             if (isset($status) && $status != null) {
                 $data['status'] = $status;

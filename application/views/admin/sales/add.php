@@ -12,7 +12,7 @@
         <select name="shop" required>
             <option selected disabled>Выберите магазин, в котором скидка</option>
             <?php foreach ($shops as $shop): ?>
-                <option value="<?= $shop['id'] ?>"><?= $shop['name'] ?></option>
+                <option value="<?= $shop['shops_id'] ?>"><?= $shop['name'] ?></option>
             <?php endforeach; ?>
         </select>
         <label for="sale">Укажите скидку</label>
@@ -26,11 +26,11 @@
                 <option value="<?= $category['category_id'] ?>"><?= $category['category_name'] ?></option>
             <?php endforeach; ?>
         </select>
-        <label for="city_id">Выберите город:</label>
-        <select name="city_id" required>
+        <label for="cities">Выберите город:</label>
+        <select multiple name="cities[]" required>
             <option selected disabled>Выберите город</option>
             <?php foreach ($cities as $city): ?>
-                <option value="<?= $city['city_id'] ?>"><?= $city['city_name'] ?></option>
+                <option value="<?= $city['id'] ?>"><?= $city['city_name'] ?></option>
             <?php endforeach; ?>
         </select>
         <label for="address">Адресс(через ; каждый новый адресс)</label>

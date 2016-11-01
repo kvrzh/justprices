@@ -18,8 +18,9 @@ class Admin_model extends CI_Model
         $result = false;
         $this->db->select('*');
         if ($join == true) {
-            $this->db->join('shops', 'shops.id=sales.shop', 'inner');
-            $this->db->join('city', 'city.city_id=sales.city_id', 'inner');
+            $this->db->join('shops', 'shop=shops.shops_id', 'inner');
+            $this->db->join('sales_city', 'sales.id=sales_city.sales_id', 'inner');
+            $this->db->join('city', "city_id=city.id", 'inner');
             $this->db->join('category', 'category.category_id=sales.category_id', 'inner');
         }
         if ($id) {
@@ -56,5 +57,13 @@ class Admin_model extends CI_Model
         if ($this->db->update($table, $array)) {
             $this->session->set_flashdata('status', $status);
         }
+    }
+
+    public function getLastIdItem()
+    {
+        $this->db->select_max('id');
+        $query = $this->db->get('sales');
+        return $query->row();
+
     }
 }

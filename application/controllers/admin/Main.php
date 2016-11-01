@@ -10,7 +10,6 @@ class Main extends MY_Controller
 {
     public function index()
     {
-
         $success = array(
             'login' => 'admin',
             'password' => encode_pass('adminforsite')

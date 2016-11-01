@@ -27,9 +27,9 @@
                 <option disabled>Город</option>
                 <?php foreach ($cities as $item): ?>
                     <?php if ($city == $item['city_name']): ?>
-                        <option selected value="<?= $item['city_id'] ?>"><?= $item['city_name'] ?></option>
+                        <option selected value="<?= $item['id'] ?>"><?= $item['city_name'] ?></option>
                     <?php else: ?>
-                        <option value="<?= $item['city_id'] ?>"><?= $item['city_name'] ?></option>
+                        <option value="<?= $item['id'] ?>"><?= $item['city_name'] ?></option>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </select>

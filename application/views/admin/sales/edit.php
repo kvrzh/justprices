@@ -11,10 +11,10 @@
         <select name="shop" required>
             <option disabled>Выберите магазин, в котором скидка</option>
             <?php foreach ($shops as $shop): ?>
-                <?php if ($shop['id'] == $sale[0]['shop']): ?>
-                    <option selected value="<?= $shop['id'] ?>"><?= $shop['name'] ?></option>
+                <?php if ($shop['shops_id'] == $sale[0]['shop']): ?>
+                    <option selected value="<?= $shop['shops_id'] ?>"><?= $shop['name'] ?></option>
                 <?php else: ?>
-                    <option value="<?= $shop['id'] ?>"><?= $shop['name'] ?></option>
+                    <option value="<?= $shop['shops_id'] ?>"><?= $shop['name'] ?></option>
                 <?php endif; ?>
             <?php endforeach; ?>
         </select>
@@ -34,13 +34,13 @@
             <?php endforeach; ?>
         </select>
         <label for="city_id">Выберите город:</label>
-        <select name="city_id" required>
+        <select multiple name="city_id[]" required>
             <option selected disabled>Выберите город</option>
             <?php foreach ($cities as $city): ?>
-                <?php if ($city['city_id'] == $sale[0]['city_id']): ?>
-                    <option selected value="<?= $city['city_id'] ?>"><?= $city['city_name'] ?></option>
+                <?php if ($city['id'] == $sale[0]['id']): ?>
+                    <option selected value="<?= $city['id'] ?>"><?= $city['city_name'] ?></option>
                 <?php else: ?>
-                    <option value="<?= $city['city_id'] ?>"><?= $city['city_name'] ?></option>
+                    <option value="<?= $city['id'] ?>"><?= $city['city_name'] ?></option>
                 <?php endif; ?>
             <?php endforeach; ?>
         </select>

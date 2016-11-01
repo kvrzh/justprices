@@ -15,19 +15,4 @@ class MY_Controller extends CI_Controller
         $this->load->view('default/footer');
     }
 
-    function _remap($method)
-    {
-        if (!isset($_SESSION['login'])) {
-            $_SESSION['login'] = false;
-        }
-        if ($_SESSION['login'] == false) {
-            if ($_SERVER['REQUEST_URI'] == '/index.php/admin' || $_SERVER['REQUEST_URI'] == '/admin') {
-                $this->$method();
-            } else {
-                redirect('admin');
-            }
-        } elseif ($_SESSION['login'] == true) {
-            $this->$method();
-        }
-    }
 }

@@ -18,6 +18,7 @@ class Sales_model extends CI_Model
         $result = false;
         $this->db->select('*');
         $this->db->join('shops', 'shops.id=sales.shop', 'inner');
+        $this->db->join('sales_city', 'sales.sales_id=sales_city.sales_id', 'inner');
         $this->db->where('city',$city);
         if ($shop != null) {
             $this->db->where('shop', $shop);
@@ -48,7 +49,9 @@ class Sales_model extends CI_Model
                 $this->db->where($item['name'],$item['value']);
             }
         }
-        $this->db->join('shops', 'shops.id=sales.shop', 'inner');
+        $this->db->join('shops', 'shop=shops.shops_id', 'inner');
+        $this->db->join('sales_city', 'sales.id=sales_city.sales_id', 'inner');
+        $this->db->join('city', "city_id=city.id", 'inner');
 
         $query = $this->db->get('sales');
         foreach ($query->result_array() as $row) {
@@ -71,6 +74,8 @@ class Sales_model extends CI_Model
     public function getSaleById($id){
         $this->db->select('*');
         $this->db->join('shops', 'shops.id=sales.shop', 'inner');
+        $this->db->join('sales_city', 'sales.sales_id=sales_city.sales_id', 'inner');
+        $this->db->join('city', "city_id=city.id", 'inner');
         $this->db->where('sales_id', $id);
         $query = $this->db->get('sales');
         $sale = array();
