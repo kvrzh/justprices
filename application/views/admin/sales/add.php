@@ -35,6 +35,8 @@
         </select>
         <label for="address">Адресс(через ; каждый новый адресс)</label>
         <input type="text" name="address" required>
+        <label for="sale_description">Укажите описание скидки</label>
+        <textarea rows="10" cols="45" name="sale_description"></textarea>
         <input type="submit" class="btn btn-success">
     </form>
 </div>

@@ -13,7 +13,7 @@
 <p><?=$sale->description ?></p>
 <div class="sale_terms col-lg-8 col-md-8 col-sm-12 col-xs-12">
     <h3>Условия акции:</h3>
-    <p><?= $sale->description ?></p>
+    <p><?= $sale->sale_description ?></p>
 </div>
 <div class="sale_date col-lg-4 col-md-4 col-sm-12 col-xs-12">
     <h3>Действует до:</h3>
