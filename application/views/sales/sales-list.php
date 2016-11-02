@@ -20,7 +20,7 @@
             <div class="sale-shop-info">
                 <h3><?= $sale['name'] ?></h3>
                 <span><?= decode_encode_category((int)$sale['category_id']) ?></span>
-                <p><?= $sale['description'] ?></p>
+                <p><?= $sale['sale_description'] ?></p>
             </div>
             <div class="sale-info">
                 <input name="sales_id" type="hidden" value="<?= $sale['sales_id'] ?>">

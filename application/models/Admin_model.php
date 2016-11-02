@@ -66,4 +66,15 @@ class Admin_model extends CI_Model
         return $query->row();
 
     }
+
+    public function updateSaleCity($id, $array)
+    {
+        $this->db->where('sales_id', $id);
+        $this->db->delete('sales_city');
+        foreach ($array as $item) {
+            $this->db->set('sales_id', $id);
+            $this->db->set('city_id', $item);
+            $this->db->insert('sales_city');
+        }
+    }
 }

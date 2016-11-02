@@ -28,7 +28,14 @@
                     <td><?= $sale['sale'] ?></td>
                     <td><?= $sale['date'] ?></td>
                     <td><?= $sale['category_name'] ?></td>
-                    <td><?= $sale['city_name'] ?></td>
+                    <td><?php if (is_array($sale['city_name'])): ?>
+                            <?php foreach ($sale['city_name'] as $city): ?>
+                                <?php echo $city . '<br>' ?>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <?= $sale['city_name'] ?>
+                        <?php endif; ?>
+                    </td>
                     <td><?= $sale['address'] ?></td>
                     <td><?= $sale['sale_description'] ?></td>
                 </tr>

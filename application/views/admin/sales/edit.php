@@ -34,14 +34,19 @@
             <?php endforeach; ?>
         </select>
         <label for="city_id">Выберите город:</label>
-        <select multiple name="city_id[]" required>
+        <select multiple name="cities[]" required>
             <option selected disabled>Выберите город</option>
             <?php foreach ($cities as $city): ?>
-                <?php if ($city['id'] == $sale[0]['id']): ?>
-                    <option selected value="<?= $city['id'] ?>"><?= $city['city_name'] ?></option>
-                <?php else: ?>
-                    <option value="<?= $city['id'] ?>"><?= $city['city_name'] ?></option>
-                <?php endif; ?>
+                <?php for ($i = 0; $i < count($sale[0]['city_id']); $i++): ?>
+                    <?php if ($city['id'] == $sale[0]['city_id'][$i]): ?>
+                        <option selected value="<?= $city['id'] ?>"><?= $city['city_name'] ?></option>
+                        <?php break ?>
+                    <?php endif; ?>
+                    <?php if ($i == count($sale[0]['city_id']) - 1): ?>
+                        <option value="<?= $city['id'] ?>"><?= $city['city_name'] ?></option>
+                        <?php break ?>
+                    <?php endif; ?>
+                <?php endfor; ?>
             <?php endforeach; ?>
         </select>
         <label for="address">Адресс(через ; каждый новый адресс)</label>
