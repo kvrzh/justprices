@@ -14,14 +14,7 @@ class Sales extends MY_Controller
         $this->load->model(array('Sales_model', 'Admin_model'));
     }
 
-    function _remap($method, $params = array())
-    {
-        if ($_SESSION['login'] != true) {
-            redirect('/admin');
-        } else {
-            return call_user_func_array(array($this, $method), $params);
-        }
-    }
+
     function index()
     {
         $sales = $this->Admin_model->getTable('sales');

@@ -9,14 +9,10 @@ $(document).ready(function () {
 
     resizeSearch();
     loadSale();
-    setTimeout(function () {
-        setPadding()
-    }, 200);
     $('.filter>span').click(function () {
         resetFilter();
     });
     $(window).resize(function () {
-        setPadding();
         resizeSearch();
         resizeSales();
     });
@@ -121,7 +117,12 @@ function loadSale() {
             window.history.pushState(null, null, url);
         }
         $('.sales-list').html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
-        $('div.sales-list').load(url, {js: 'true'});
+        $('div.sales-list').load(url, {js: 'true'}, function () {
+            $(".sale_item_details").mCustomScrollbar({
+                theme: "dark"
+            });
+            $('.sales-list').mCustomScrollbar("destroy");
+        });
     })
 }
 
@@ -134,17 +135,18 @@ function loadSaleList() {
         $('.sales-list').html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
         $('div.sales-list').load(url, {js: 'true'}, function () {
             $(".sales-list-load").css({
-                'max-height': 'calc(100vh - 50px)'
+                'max-height': 'calc(100vh - 70px)'
             });
             $(".sales-list-load").mCustomScrollbar({
                 theme: "dark"
             });
-            setPadding();
             $('.sales-list').mCustomScrollbar("destroy");
         });
     });
 }
 function filter() {
+    var menu = $('div.sales .filter');
+    var content = $('div.sales .sales-list');
     $('.filter button').click(function () {
         $('#search').val('');
         city = filterSmth('city');
@@ -164,6 +166,16 @@ function filter() {
         var url = '/sales';
         if (url != window.location) {
             window.history.pushState(null, null, url);
+        }
+        if ($(menu).hasClass('active')) {
+            $(menu).removeClass('active');
+            addAll(menu);
+            if (width < 1200 && $(content).hasClass('col-md-8')) {
+                $(content).removeClass('col-md-8').addClass('col-md-12');
+            }
+            setTimeout(function () {
+                $(content).css('float', 'left');
+            }, 500);
         }
         $('.sales-list').html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
         $('div.sales-list').load(url, {js: true, 'result': [city, category, shop]}, function () {

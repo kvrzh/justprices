@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>JustPrices</title>
-    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="<?= css_url('style.css') ?>"/>
     <link rel="stylesheet" type="text/css" href="<?= assets_url('custom-scroll/jquery.mCustomScrollbar.css') ?>"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">

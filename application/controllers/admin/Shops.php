@@ -14,14 +14,7 @@ class Shops extends MY_Controller
         $this->load->model(array('Sales_model', 'Admin_model'));
     }
 
-    function _remap($method)
-    {
-        if ($_SESSION['login'] != true) {
-            redirect('/admin');
-        } else {
-            $this->$method();
-        }
-    }
+
     function index()
     {
         $data['shops'] = $this->Admin_model->getTable('shops', null, false);

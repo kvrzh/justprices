@@ -5,6 +5,21 @@ $background-color: #161616;
 $green-color:#27ae60;
 $site-font:'Roboto', sans-serif;
 $footer-height:20px;
+@mixin respond-to($media) {
+  @if $media == 'small' {
+    @media only screen and (max-width: 1200px) {
+      @content;
+    }
+  } @else if $media == '880px' {
+    @media only screen and (max-width: 880px) {
+      @content;
+    }
+  } @else if $media == 'phones' {
+    @media only screen and (max-width: 500px) {
+      @content;
+    }
+  }
+}
 html {
 
 }
@@ -80,10 +95,22 @@ div.admin {
 }
 div.main{
   min-height: calc(100vh - 30px);
-
   div.name {
+    @include respond-to('phones') {
+      min-height: calc(100vh - 120px) !important;
+    }
     min-height: calc(100vh - 180px);
     h1 {
+      @include respond-to('880px') {
+        text-align: center !important;
+        width: 100% !important;
+        margin-top: 5vh !important;
+        padding: 0 !important;
+      }
+      @include respond-to('phones') {
+        font-size: 30px !important;
+        font-weight: 100 !important;
+      }
       color: #fff;
       font-weight: 300;
       margin: 0;
@@ -92,12 +119,27 @@ div.main{
 
     }
     img{
+      @include respond-to('880px') {
+        float: none !important;
+        margin-top: 20vh !important;
+        width: 60% !important;
+        margin-left: 20% !important;
+      }
+      @include respond-to('phones') {
+        width: 90% !important;
+        margin-left: 5% !important;
+        margin-top: 20vh !important;
+      }
       float: left;
       margin-left: 10%;
       margin-top: calc(30vh + 41px);
       width: 20%;
     }
     a {
+      @include respond-to('880px') {
+        float: none !important;
+        margin: 20px auto !important;
+      }
       font-weight: 400;
       text-transform: uppercase;
       color: #27ae60;
@@ -123,6 +165,13 @@ div.main{
       }
     }
     h3 {
+      @include respond-to('880px') {
+        text-align: center !important;
+        padding-right: 0 !important;
+      }
+      @include respond-to('phones') {
+        display: none;
+      }
       font-weight: 300;
       color: #D6D6D6;
       padding-right: 15%;
@@ -132,6 +181,9 @@ div.main{
     }
   }
   div.social{
+    @include respond-to('phones') {
+      width: 100% !important;
+    }
     clear: both;
     text-align: center;
     padding-bottom: 15px;
@@ -156,8 +208,12 @@ div.main{
     }
   }
   div.contacts_footer{
+    @include respond-to('phones') {
+      display: none !important;
+    }
     text-align: center;
     margin-top: 15px;
+
     ul{
       list-style: none;
       color: #fff;
@@ -172,13 +228,7 @@ div.main{
   }
 }
 
-@mixin respond-to($media) {
-  @if $media == 'small' {
-    @media only screen and (max-width: 1200px) {
-      @content;
-    }
-  }
-}
+
 div.sales{
   @extend div.main;
   div {
@@ -298,7 +348,7 @@ div.sales{
       position: fixed;
       z-index: 5;
       background: #000;
-      height: calc(100vh - 50px);
+      height: calc(100vh - 70px);
       opacity: 0;
     }
     div.filter-item {
@@ -348,10 +398,13 @@ div.sales{
   }
   .sales-list {
     background: #f9f9f9;
-    max-height: calc(100vh - 50px);
+    max-height: calc(100vh - 70px);
     padding-right: 0;
     div.sales-list-load{
       h1{
+        @include respond-to('phones') {
+          padding-right: 0;
+        }
         text-align: center;
         border-bottom: 1px solid #c3c3c3;
         padding-bottom: 15px;
@@ -401,8 +454,16 @@ div.sales{
     .sales-list-item {
       padding: 15px 0;
       border-top: 1px solid #e2e2e2;
-
+      > h3 {
+        margin: 0 0 10px 0;
+        text-align: center;
+        font-size: 28px;
+        font-weight: 400;
+      }
       img {
+        @include respond-to('phones') {
+          display: none !important;
+        }
         width: 15%;
         display: inline-block;
         vertical-align: top;
@@ -411,12 +472,7 @@ div.sales{
         display: inline-block;
         width: calc(65% - 7px);
         padding-right: 15px;
-        h3 {
-          margin: 0 0 10px 0;
-          text-align: center;
-          font-size: 28px;
-          font-weight: 400;
-        }
+        word-wrap: break-word;
         p {
           vertical-align: top;
           margin-left: 15px;
@@ -427,15 +483,25 @@ div.sales{
         }
       }
       .sale-info {
+        @include respond-to('phones') {
+          width: 35%;
+        }
         width: 20%;
         display: inline-block;
         text-align: center;
         border-left: 1px solid #e2e2e2;
         vertical-align: top;
         span {
+          @include respond-to('phones') {
+            font-weight: 100;
+            font-size: 18px;
+          }
           font-weight: 100;
           font-size: 24px;
           b {
+            @include respond-to('phones') {
+              font-size: 20px;
+            }
             color: #27ae60;
             font-size: 30px;
           }
@@ -448,6 +514,10 @@ div.sales{
 
         }
         button {
+          @include respond-to('phones') {
+            font-size: 12px;
+            padding: 5px;
+          }
           background-color: #27ae60;
           border-color: #27ae60;
           margin-top: 10px;
@@ -462,7 +532,7 @@ div.sales{
 
     }
     div.sale_spin{
-      height: calc(100vh - 50px);
+      height: calc(100vh - 70px);
       text-align: center;
       padding-right:15px;
       i.fa-spinner{
@@ -471,61 +541,83 @@ div.sales{
       }
     }
     div.sale_item_details{
-      height: calc(100vh - 50px);
+      height: calc(100vh - 70px);
       text-align: center;
-      padding-right:15px;
-      >i{
+      i {
         position: absolute;
         right: 3%;
         top: 20px;
         font-size: 30px;
         cursor: pointer;
       }
-      >h1{
+      h1 {
         font-size: 40px;
         color: #000;
-        font-weight: 100;
         margin-top:0;
         padding-top: 20px;
         >b{
+          @include respond-to('phones') {
+            display: block;
+          }
           color: $green-color;
           font-weight: 400;
         }
       }
-      >h3{
+      h3 {
         display: block;
-        font-size: 24px;
+        font-size: 26px;
         font-weight: 100;
         border-top: 1px solid #c9c9c9;
         padding-top: 20px;
       }
-      >span{
+      span {
         display: block;
+        padding-bottom: 15px;
       }
-      >img{
+      img {
         display: inline-block;
         width: 20%;
+        @include respond-to('phones') {
+          width: 35%;
+          padding-bottom: 15px;
       }
-      >p{
+      }
+      p {
         display: inline-block;
         width: calc(80% - 7px);
         text-align: justify;
         padding: 0 2%;
+        vertical-align: top;
+        @include respond-to('phones') {
+          width: 100%;
+        }
       }
-      >div.sale_terms{
+      div.sale_terms {
         margin-top: 20px;
         border-top: 1px solid #cbcbcb;
+        h3 {
+          border-top: none;
+          padding-top: 0;
+          font-size: 20px;
+        }
         p{
           text-align: justify;
           padding: 0 2%;
           margin-bottom: 20px;
         }
       }
-      >div.sale_date{
+      div.sale_date {
         margin-top: 20px;
         border-top: 1px solid #cbcbcb;
+        padding-bottom: 20px;
+        h3 {
+          border-top: none;
+          padding-top: 0;
+        }
         span{
           display: block;
+          font-weight: bold;
+          padding-bottom: 0;
         }
       }
     }

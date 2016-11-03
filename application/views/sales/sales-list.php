@@ -16,9 +16,9 @@
     <?php else: ?>
         <?php foreach ($sales as $sale): ?>
         <div class="sales-list-item" onload="setPadding()">
+            <h3><?= $sale['name'] ?></h3>
             <img src="<?= img_url('logos/' . $sale['image']) ?>">
             <div class="sale-shop-info">
-                <h3><?= $sale['name'] ?></h3>
                 <span><?= decode_encode_category((int)$sale['category_id']) ?></span>
                 <p><?= $sale['sale_description'] ?></p>
             </div>

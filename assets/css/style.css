@@ -5864,17 +5864,56 @@ div.main, div.sales {
   min-height: calc(100vh - 30px); }
   div.main div.name, div.sales div.name {
     min-height: calc(100vh - 180px); }
+
+@media only screen and (max-width: 500px) {
+    div.main div.name, div.sales div.name {
+        min-height: calc(100vh - 120px) !important;
+    }
+}
     div.main div.name h1, div.sales div.name h1 {
       color: #fff;
       font-weight: 300;
       margin: 0;
       padding: 30vh 15% 0 0;
       text-align: right; }
+
+@media only screen and (max-width: 880px) {
+    div.main div.name h1, div.sales div.name h1 {
+        text-align: center !important;
+        width: 100% !important;
+        margin-top: 5vh !important;
+        padding: 0 !important;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    div.main div.name h1, div.sales div.name h1 {
+        font-size: 30px !important;
+        font-weight: 100 !important;
+    }
+}
     div.main div.name img, div.sales div.name img {
       float: left;
       margin-left: 10%;
       margin-top: calc(30vh + 41px);
       width: 20%; }
+
+@media only screen and (max-width: 880px) {
+    div.main div.name img, div.sales div.name img {
+        float: none !important;
+        margin-top: 20vh !important;
+        width: 60% !important;
+        margin-left: 20% !important;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    div.main div.name img, div.sales div.name img {
+        width: 90% !important;
+        margin-left: 5% !important;
+        margin-top: 20vh !important;
+    }
+}
     div.main div.name a, div.sales div.name a {
       font-weight: 400;
       text-transform: uppercase;
@@ -5888,6 +5927,13 @@ div.main, div.sales {
       text-align: center;
       margin-right: 15%;
       transition: 0.3s; }
+
+@media only screen and (max-width: 880px) {
+    div.main div.name a, div.sales div.name a {
+        float: none !important;
+        margin: 20px auto !important;
+    }
+}
       div.main div.name a:hover, div.sales div.name a:hover {
         color: #fff;
         border: 2px solid #27ae60;
@@ -5904,6 +5950,19 @@ div.main, div.sales {
       text-align: right;
       margin: 20px 0;
       font-size: 20px; }
+
+@media only screen and (max-width: 880px) {
+    div.main div.name h3, div.sales div.name h3 {
+        text-align: center !important;
+        padding-right: 0 !important;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    div.main div.name h3, div.sales div.name h3 {
+        display: none;
+    }
+}
   div.main div.social, div.sales div.social {
     clear: both;
     text-align: center;
@@ -5911,6 +5970,12 @@ div.main, div.sales {
     width: 30%;
     margin: 0 auto;
     border-bottom: 1px solid rgba(188, 188, 188, 0.55); }
+
+@media only screen and (max-width: 500px) {
+    div.main div.social, div.sales div.social {
+        width: 100% !important;
+    }
+}
     div.main div.social a, div.sales div.social a {
       margin: 0 15px; }
       div.main div.social a i, div.sales div.social a i {
@@ -5926,6 +5991,12 @@ div.main, div.sales {
   div.main div.contacts_footer, div.sales div.contacts_footer {
     text-align: center;
     margin-top: 15px; }
+
+@media only screen and (max-width: 500px) {
+    div.main div.contacts_footer, div.sales div.contacts_footer {
+        display: none !important;
+    }
+}
     div.main div.contacts_footer ul, div.sales div.contacts_footer ul {
       list-style: none;
       color: #fff;
@@ -6032,7 +6103,7 @@ div.sales .filter {
     position: fixed;
     z-index: 5;
     background: #000;
-    height: calc(100vh - 50px);
+      height: calc(100vh - 70px);
     opacity: 0; }
   div.sales .filter div.filter-item {
     text-align: center;
@@ -6070,13 +6141,19 @@ div.sales .filter {
       background: #2ecc71; }
 div.sales .sales-list {
   background: #f9f9f9;
-  max-height: calc(100vh - 50px);
+    max-height: calc(100vh - 70px);
   padding-right: 0; }
   div.sales .sales-list div.sales-list-load h1 {
     text-align: center;
     border-bottom: 1px solid #c3c3c3;
     padding-bottom: 15px;
     padding-right: 60px; }
+
+@media only screen and (max-width: 500px) {
+    div.sales .sales-list div.sales-list-load h1 {
+        padding-right: 0;
+    }
+}
   div.sales .sales-list .mCSB_scrollTools {
     margin: 15px 0; }
   div.sales .sales-list div.filter_error {
@@ -6113,19 +6190,29 @@ div.sales .sales-list {
   div.sales .sales-list .sales-list-item {
     padding: 15px 0;
     border-top: 1px solid #e2e2e2; }
+
+div.sales .sales-list .sales-list-item > h3 {
+    margin: 0 0 10px 0;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 400;
+}
     div.sales .sales-list .sales-list-item img {
       width: 15%;
       display: inline-block;
       vertical-align: top; }
+
+@media only screen and (max-width: 500px) {
+    div.sales .sales-list .sales-list-item img {
+        display: none !important;
+    }
+}
     div.sales .sales-list .sales-list-item .sale-shop-info {
       display: inline-block;
       width: calc(65% - 7px);
-      padding-right: 15px; }
-      div.sales .sales-list .sales-list-item .sale-shop-info h3 {
-        margin: 0 0 10px 0;
-        text-align: center;
-        font-size: 28px;
-        font-weight: 400; }
+        padding-right: 15px;
+        word-wrap: break-word;
+    }
       div.sales .sales-list .sales-list-item .sale-shop-info p {
         vertical-align: top;
         margin-left: 15px; }
@@ -6138,12 +6225,31 @@ div.sales .sales-list {
       text-align: center;
       border-left: 1px solid #e2e2e2;
       vertical-align: top; }
+
+@media only screen and (max-width: 500px) {
+    div.sales .sales-list .sales-list-item .sale-info {
+        width: 35%;
+    }
+}
       div.sales .sales-list .sales-list-item .sale-info span {
         font-weight: 100;
         font-size: 24px; }
+
+@media only screen and (max-width: 500px) {
+    div.sales .sales-list .sales-list-item .sale-info span {
+        font-weight: 100;
+        font-size: 18px;
+    }
+}
         div.sales .sales-list .sales-list-item .sale-info span b {
           color: #27ae60;
           font-size: 30px; }
+
+@media only screen and (max-width: 500px) {
+    div.sales .sales-list .sales-list-item .sale-info span b {
+        font-size: 20px;
+    }
+}
       div.sales .sales-list .sales-list-item .sale-info small {
         display: block; }
         div.sales .sales-list .sales-list-item .sale-info small b {
@@ -6153,63 +6259,119 @@ div.sales .sales-list {
         border-color: #27ae60;
         margin-top: 10px;
         transition: 0.5s; }
+
+@media only screen and (max-width: 500px) {
+    div.sales .sales-list .sales-list-item .sale-info button {
+        font-size: 12px;
+        padding: 5px;
+    }
+}
         div.sales .sales-list .sales-list-item .sale-info button:hover {
           background-color: #2ecc71;
           transition: 0.5s; }
   div.sales .sales-list div.sale_spin {
-    height: calc(100vh - 50px);
+      height: calc(100vh - 70px);
     text-align: center;
     padding-right: 15px; }
     div.sales .sales-list div.sale_spin i.fa-spinner {
       margin-top: calc(50vh - 25px);
       font-size: 50px; }
   div.sales .sales-list div.sale_item_details {
-    height: calc(100vh - 50px);
-    text-align: center;
-    padding-right: 15px; }
-    div.sales .sales-list div.sale_item_details > i {
+      height: calc(100vh - 70px);
+      text-align: center;
+  }
+
+div.sales .sales-list div.sale_item_details i {
       position: absolute;
       right: 3%;
       top: 20px;
       font-size: 30px;
       cursor: pointer; }
-    div.sales .sales-list div.sale_item_details > h1 {
+
+div.sales .sales-list div.sale_item_details h1 {
       font-size: 40px;
       color: #000;
-      font-weight: 100;
       margin-top: 0;
       padding-top: 20px; }
-      div.sales .sales-list div.sale_item_details > h1 > b {
+
+div.sales .sales-list div.sale_item_details h1 > b {
         color: #27ae60;
         font-weight: 400; }
-    div.sales .sales-list div.sale_item_details > h3 {
+
+@media only screen and (max-width: 500px) {
+    div.sales .sales-list div.sale_item_details h1 > b {
+        display: block;
+    }
+}
+
+div.sales .sales-list div.sale_item_details h3 {
       display: block;
-      font-size: 24px;
+    font-size: 26px;
       font-weight: 100;
       border-top: 1px solid #c9c9c9;
       padding-top: 20px; }
-    div.sales .sales-list div.sale_item_details > span {
-      display: block; }
-    div.sales .sales-list div.sale_item_details > img {
+
+div.sales .sales-list div.sale_item_details span {
+    display: block;
+    padding-bottom: 15px;
+}
+
+div.sales .sales-list div.sale_item_details img {
       display: inline-block;
       width: 20%; }
-    div.sales .sales-list div.sale_item_details > p {
+
+@media only screen and (max-width: 500px) {
+    div.sales .sales-list div.sale_item_details img {
+        width: 35%;
+        padding-bottom: 15px;
+    }
+}
+
+div.sales .sales-list div.sale_item_details p {
       display: inline-block;
       width: calc(80% - 7px);
       text-align: justify;
-      padding: 0 2%; }
-    div.sales .sales-list div.sale_item_details > div.sale_terms {
+    padding: 0 2%;
+    vertical-align: top;
+}
+
+@media only screen and (max-width: 500px) {
+    div.sales .sales-list div.sale_item_details p {
+        width: 100%;
+    }
+}
+
+div.sales .sales-list div.sale_item_details div.sale_terms {
       margin-top: 20px;
       border-top: 1px solid #cbcbcb; }
-      div.sales .sales-list div.sale_item_details > div.sale_terms p {
+
+div.sales .sales-list div.sale_item_details div.sale_terms h3 {
+    border-top: none;
+    padding-top: 0;
+    font-size: 20px;
+}
+
+div.sales .sales-list div.sale_item_details div.sale_terms p {
         text-align: justify;
         padding: 0 2%;
         margin-bottom: 20px; }
-    div.sales .sales-list div.sale_item_details > div.sale_date {
+
+div.sales .sales-list div.sale_item_details div.sale_date {
       margin-top: 20px;
-      border-top: 1px solid #cbcbcb; }
-      div.sales .sales-list div.sale_item_details > div.sale_date span {
-        display: block; }
+    border-top: 1px solid #cbcbcb;
+    padding-bottom: 20px;
+}
+
+div.sales .sales-list div.sale_item_details div.sale_date h3 {
+    border-top: none;
+    padding-top: 0;
+}
+
+div.sales .sales-list div.sale_item_details div.sale_date span {
+    display: block;
+    font-weight: bold;
+    padding-bottom: 0;
+}
 
 footer {
   height: 20px;
