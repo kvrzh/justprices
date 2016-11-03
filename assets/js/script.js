@@ -180,7 +180,7 @@ function filter() {
         $('.sales-list').html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
         $('div.sales-list').load(url, {js: true, 'result': [city, category, shop]}, function () {
             $(".sales-list-load").css({
-                'max-height': 'calc(100vh - 50px)'
+                'max-height': 'calc(100vh - 70px)'
             });
             $(".sales-list-load").mCustomScrollbar({
                 theme: "dark"
