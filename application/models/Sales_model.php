@@ -36,7 +36,7 @@ class Sales_model extends CI_Model
         $this->db->select('*');
         $this->db->where('name', $name);
         $query = $this->db->get('shops');
-        $result = $query->row('id');
+        $result = $query->row('shops_id');
         return $result;
     }
 

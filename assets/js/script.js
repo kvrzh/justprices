@@ -1,6 +1,8 @@
 $(document).ready(function () {
     $(".sales-list").mCustomScrollbar({
-        theme: "dark"
+        theme: "dark",
+        timeout: 0,
+        scrollInertia: 200
     });
     showMenu();
     var elem = $('.sale_item_details i');
@@ -35,11 +37,13 @@ function helpResizeSearch() {
             if ($(window).width() >= '1200') {
                 $(this).parent().removeClass('active');
                 $('div#search_advice_wrapper').css('width','80%');
-                $('div.advice_variant').fadeOut(300);
             }
         });
 }
 function resizeSearch() {
+    $(".search input[type = 'search']").focusout(function () {
+        $('div.advice_variant').fadeOut(300);
+    });
     if ($(window).width() >= '1200') {
         $('.search form').removeClass('active');
         helpResizeSearch();
@@ -119,7 +123,9 @@ function loadSale() {
         $('.sales-list').html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
         $('div.sales-list').load(url, {js: 'true'}, function () {
             $(".sale_item_details").mCustomScrollbar({
-                theme: "dark"
+                theme: "dark",
+                timeout: 0,
+                scrollInertia: 200
             });
             $('.sales-list').mCustomScrollbar("destroy");
         });
@@ -138,7 +144,9 @@ function loadSaleList() {
                 'max-height': 'calc(100vh - 70px)'
             });
             $(".sales-list-load").mCustomScrollbar({
-                theme: "dark"
+                theme: "dark",
+                timeout: 0,
+                scrollInertia: 200
             });
             $('.sales-list').mCustomScrollbar("destroy");
         });
@@ -163,10 +171,23 @@ function filter() {
                 value: 0
             };
         }
+
         var url = '/sales';
         if (url != window.location) {
             window.history.pushState(null, null, url);
         }
+        $('.sales-list').html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
+        $('div.sales-list').load(url, {js: true, 'result': [city, category, shop]}, function () {
+            $(".sales-list-load").css({
+                'max-height': 'calc(100vh - 70px)'
+            });
+            $(".sales-list-load").mCustomScrollbar({
+                theme: "dark",
+                timeout: 0,
+                scrollInertia: 200
+            });
+            $('.sales-list').mCustomScrollbar("destroy");
+        });
         if ($(menu).hasClass('active')) {
             $(menu).removeClass('active');
             addAll(menu);
@@ -177,16 +198,6 @@ function filter() {
                 $(content).css('float', 'left');
             }, 500);
         }
-        $('.sales-list').html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
-        $('div.sales-list').load(url, {js: true, 'result': [city, category, shop]}, function () {
-            $(".sales-list-load").css({
-                'max-height': 'calc(100vh - 70px)'
-            });
-            $(".sales-list-load").mCustomScrollbar({
-                theme: "dark"
-            });
-            $('.sales-list').mCustomScrollbar("destroy");
-        });
     });
 }
 function filterSmth(filter) {
@@ -207,7 +218,8 @@ function resetFilter() {
     $('.search input.submit').click();
 }
 function search() {
-    $("#search").focus(function () {
+    $("#search")
+        .focus(function () {
         if($(this).val().length>1){
             $.get('/sales/search', {'query': $(this).val()}, function (data) {
                 data = eval('('+data+')');//json data. array of strings
@@ -252,7 +264,6 @@ function filterBySearch() {
         return false;
     });
     $('#formsearch').submit(function (event) {
-
         event.preventDefault;
         var city = filterSmth('city');
         var category = filterSmth('category');
@@ -267,10 +278,12 @@ function filterBySearch() {
         $('.sales-list').html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
         $('div.sales-list').load(url, {js: 'true', 'result': [city, category, shop]}, function () {
             $(".sales-list-load").css({
-                'max-height': 'calc(100vh - 50px)'
+                'max-height': 'calc(100vh - 70px)'
             });
             $(".sales-list-load").mCustomScrollbar({
-                theme: "dark"
+                theme: "dark",
+                timeout: 0,
+                scrollInertia: 200
             });
             setPadding();
             $('.sales-list').mCustomScrollbar("destroy");
