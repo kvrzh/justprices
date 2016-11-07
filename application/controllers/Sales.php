@@ -21,10 +21,18 @@ class Sales extends MY_Controller
         } else {
             $shop = str_replace('_', ' ', $this->Sales_model->getShopsIdByName($shop));
         }
+        if (isset($_SESSION['city'])) {
+            if (is_string($_SESSION['city'])) {
+                $_SESSION['city'] = decode_encode_city((string)$_SESSION['city']);
+            }
+            $data['city'] = $_SESSION['city'];
+        } else {
+            $data['city'] = 1;
+        }
         $default = [
             "city" => array(
                 "name" => "city_id",
-                "value" => 1
+                "value" => $data['city']
             ),
             "shop" => array(
                 "name" => "shop",
@@ -35,13 +43,9 @@ class Sales extends MY_Controller
                 "value" => 0
             )
         ];
+        $data['city'] = decode_encode_city((int)$data['city']);
         $data['cities'] = $this->Sales_model->getTable('city');
         $data['categories'] = $this->Sales_model->getTable('category');
-        if (isset($_SESSION['city'])) {
-            $data['city'] = $_SESSION['city'];
-        } else {
-            $data['city'] = decode_encode_city((int)$default['city']['value']);
-        }
         $data['sales'] = $this->Sales_model->getFilterSales($default);
         if(isset($_POST['result'])){
             $result = $_POST['result'];
@@ -54,7 +58,9 @@ class Sales extends MY_Controller
             foreach($result as $item){
                 $res[$item['name']] = $item['value'];
             }
-            $data['city'] = decode_encode_city((int)$res['city_id']);
+
+            $_SESSION['city'] = decode_encode_city((int)$res['city_id']);
+            $data['city'] = $_SESSION['city'];
             $data['sales'] = $this->Sales_model->getFilterSales($result);
         }
         if(!$data['sales']){
@@ -88,15 +94,33 @@ class Sales extends MY_Controller
             )
         ];
     }
-    function sale($id){
+
+    function sale($id = null)
+    {
+        $id = (int)$id;
+        if ($id == 0) {
+            redirect('/sales');
+        }
+        if ($_SESSION['city'] == 0) {
+            $_SESSION['city'] = decode_encode_city((string)$_SESSION['city']);
+        }
         $ar = [
             "sale" => array(
                 "name" => "sales_id",
                 "value" => $id
+            ),
+            "city" => array(
+                "name" => "city_id",
+                "value" => $_SESSION['city']
             )];
-        $data['sale'] = $this->Sales_model->getFilterSales($ar);
-        $data['sale'][0]['address'] = explode(';', $data['sale'][0]['address']);
-        $_SESSION['city'] = $data['sale'][0]['city_name'];
+        if ($this->Sales_model->getFilterSales($ar) != false) {
+            $data['status'] = true;
+            $data['sale'] = $this->Sales_model->getFilterSales($ar);
+            $data['sale'][0]['address'] = explode(';', $data['sale'][0]['address']);
+            $_SESSION['city'] = $data['sale'][0]['city_name'];
+        } else {
+            $data['status'] = false;
+        }
         if(isset($_POST['js']) && $_POST['js'] == true){
             $this->load->view('sales/sale',$data);
         }else{

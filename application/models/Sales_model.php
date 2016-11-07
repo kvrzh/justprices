@@ -42,11 +42,13 @@ class Sales_model extends CI_Model
 
     public function getFilterSales($array = null)
     {
+
         $result = false;
+
         $this->db->select('*');
-        foreach($array as $item){
+        foreach ($array as $item) {
             if ($item['value'] != 0) {
-                $this->db->where($item['name'],$item['value']);
+                $this->db->where($item['name'], $item['value']);
             }
         }
         $this->db->join('shops', 'shop=shops.shops_id', 'inner');
@@ -54,11 +56,13 @@ class Sales_model extends CI_Model
         $this->db->join('city', "city_id=city.id", 'inner');
 
         $query = $this->db->get('sales');
+
         foreach ($query->result_array() as $row) {
             $result[] = $row;
         }
         return $result;
     }
+
 
     public function getTable($table)
     {
@@ -72,6 +76,7 @@ class Sales_model extends CI_Model
 
     }
     public function getSaleById($id){
+        $sale = false;
         $this->db->select('*');
         $this->db->join('shops', 'shops.id=sales.shop', 'inner');
         $this->db->join('sales_city', 'sales.sales_id=sales_city.sales_id', 'inner');

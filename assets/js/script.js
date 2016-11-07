@@ -4,6 +4,11 @@ $(document).ready(function () {
         timeout: 0,
         scrollInertia: 200
     });
+    window.addEventListener("popstate", function (e) {
+        e.preventDefault;
+        window.location.reload();
+    }, false);
+
     showMenu();
     var elem = $('.sale_item_details i');
     filterBySearch();
@@ -21,12 +26,6 @@ $(document).ready(function () {
     filter();
 
 });
-function setPadding() {
-    var divListItem = $('div.sales-list-item').height();
-    var img = $('div.sales-list-item img').outerHeight(true);
-    var padding = (divListItem - img) / 2;
-    $('div.sales-list-item img').css('padding-top', padding);
-}
 function helpResizeSearch() {
     $(".search input[type = 'search']")
         .focus(function () {
@@ -152,6 +151,7 @@ function loadSaleList() {
         });
     });
 }
+
 function filter() {
     var menu = $('div.sales .filter');
     var content = $('div.sales .sales-list');

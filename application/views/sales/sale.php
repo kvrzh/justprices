@@ -3,9 +3,11 @@
         loadSaleList();
     })
 </script>
-<?php $sale[0] ?>
+
 <div class="sale_item_details">
-<i class="fa fa-times" aria-hidden="true"></i>
+    <i class="fa fa-times" aria-hidden="true"></i>
+    <?php if ($status == true && isset($status)): ?>
+
     <h1>Cкидка: <b><?= $sale[0]['sale'] ?></b></h1>
     <h3><?= $sale[0]['name'] ?></h3>
     <span><b><?= decode_encode_category((int)$sale[0]['category_id']) ?></b></span>
@@ -25,5 +27,8 @@
     <span><?= $address ?></span>
     <?php endforeach ?>
 </div>
+    <?php else: ?>
+        <h1>Такой страницы нет</h1>
+    <?php endif; ?>
     <div class="fix"></div>
 </div>
