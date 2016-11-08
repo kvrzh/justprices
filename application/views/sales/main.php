@@ -39,7 +39,7 @@
             <select name="category">
                 <option selected value="0">Все категории</option>
                 <?php foreach ($categories as $category): ?>
-                    <option value="<?= $category['category_id'] ?>"><?= $category['category_name'] ?></option>
+                    <option value="<?= $category['id'] ?>"><?= $category['category_name'] ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
@@ -47,5 +47,5 @@
         <button class="btn btn-success">Поиск</button>
         <span>Сбросить фильтр</span>
     </div>
-    <div class="sales-list col-md-12 col-lg-8">
+    <div class="sales-list col-md-12 col-lg-8 col-sm-12 col-xs-12 ">
 

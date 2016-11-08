@@ -51,14 +51,12 @@ class Sales extends MY_Controller
             $result = $_POST['result'];
             if (isset($result[2]) && $result[2]['name'] == 'shop') {
                 $id = str_replace('_', ' ', $result[2]['value']);
-
                 $id = $this->Sales_model->getShopsIdByName($id);
                 $result[2]['value'] = $id;
             }
             foreach($result as $item){
                 $res[$item['name']] = $item['value'];
             }
-
             $_SESSION['city'] = decode_encode_city((int)$res['city_id']);
             $data['city'] = $_SESSION['city'];
             $data['sales'] = $this->Sales_model->getFilterSales($result);

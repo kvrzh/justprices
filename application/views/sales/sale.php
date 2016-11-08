@@ -1,10 +1,10 @@
 <div class="sale_item_details">
-    <i class="fa fa-times" aria-hidden="true"></i>
+    <i><img src="<?= img_url('cross.png'); ?>"/></i>
     <?php if ($status == true && isset($status)): ?>
 
     <h1>Cкидка: <b><?= $sale[0]['sale'] ?></b></h1>
     <h3><?= $sale[0]['name'] ?></h3>
-    <span><b><?= decode_encode_category((int)$sale[0]['category_id']) ?></b></span>
+        <span><b><?= $sale[0]['category_name'] ?></b></span>
     <img src="<?= img_url('/logos/' . $sale[0]['image']) ?>">
 
     <p><?= $sale[0]['description'] ?></p>

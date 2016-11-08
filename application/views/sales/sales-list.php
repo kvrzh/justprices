@@ -12,7 +12,7 @@
             <h3><?= $sale['name'] ?></h3>
             <img src="<?= img_url('logos/' . $sale['image']) ?>">
             <div class="sale-shop-info">
-                <span><?= decode_encode_category((int)$sale['category_id']) ?></span>
+                <span><?= $sale['category_name'] ?></span>
                 <p><?= $sale['sale_description'] ?></p>
             </div>
             <div class="sale-info">

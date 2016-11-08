@@ -1,5 +1,7 @@
 $(document).ready(function () {
-    $(".sales-list").mCustomScrollbar({
+    var sales_list = $(".sales-list");
+    var sales_filter = $("div.filter");
+    $(sales_list).mCustomScrollbar({
         theme: "dark",
         timeout: 0,
         scrollInertia: 200
@@ -10,10 +12,10 @@ $(document).ready(function () {
     }, false);
 
     showMenu();
-    filterBySearch();
+    filterBySearch(sales_list);
     search();
     resizeSearch();
-    $('.sales-list')
+    $(sales_list)
         .on('click', '.sales-list-item button', function () {
             loadSale(this);
         })
@@ -24,12 +26,12 @@ $(document).ready(function () {
             resetFilter();
             $('.filter button').click();
         });
-    $('.filter>span').click(function () {
+    $(sales_filter).on('click', '>span', function () {
         resetFilter();
     });
     $(window).resize(function () {
         resizeSearch();
-        resizeSales();
+        resizeSales(sales_list, sales_filter);
     });
     filter();
 
@@ -66,7 +68,7 @@ function showMenu() {
         if ($(menu).hasClass('active')) {
             $(menu).removeClass('active');
             addAll(menu);
-            if (width < 1200 && $(content).hasClass('col-md-8')) {
+            if ($(content).hasClass('col-md-8')) {
                 $(content).removeClass('col-md-8').addClass('col-md-12');
             }
             setTimeout(function () {
@@ -105,18 +107,18 @@ function addAll(item) {
     $(item).addClass('hidden-xs');
     $(item).addClass('col-lg-2');
 }
-function resizeSales() {
+function resizeSales(div_sales_list, div_filter) {
     var width = $(window).width();
     if (width >= 1200) {
-        if ($('div.sales-list').css('float') == 'right') {
-            $('div.sales-list').css('float', 'left');
+        if ($(div_sales_list).css('float') == 'right') {
+            $(div_sales_list).css('float', 'left');
         }
-        if ($('div.filter').hasClass('mob')) {
-            $('div.filter').removeClass('mob');
+        if ($(div_filter).hasClass('mob')) {
+            $(div_filter).removeClass('mob');
         }
     } else {
-        if ($('div.sales-list').hasClass('col-md-8')) {
-            $('div.filter').removeClass('col-md-8').addClass('col-md-12');
+        if ($(div_sales_list).hasClass('col-md-8')) {
+            $(div_filter).removeClass('col-md-8').addClass('col-md-12');
         }
     }
 }
@@ -178,7 +180,7 @@ function filter() {
         if (url != window.location) {
             window.history.pushState(null, null, url);
         }
-        $('.sales-list').html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
+        $('div.sales-list').html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
         $('div.sales-list').load(url, {js: true, 'result': [city, category, shop]}, function () {
             $(".sales-list-load").css({
                 'max-height': 'calc(100vh - 70px)'
@@ -190,16 +192,6 @@ function filter() {
             });
             $('.sales-list').mCustomScrollbar("destroy");
         });
-        if ($(menu).hasClass('active')) {
-            $(menu).removeClass('active');
-            addAll(menu);
-            if (width < 1200 && $(content).hasClass('col-md-8')) {
-                $(content).removeClass('col-md-8').addClass('col-md-12');
-            }
-            setTimeout(function () {
-                $(content).css('float', 'left');
-            }, 500);
-        }
     });
 }
 function filterSmth(filter) {
@@ -261,15 +253,15 @@ function searchChoise() {
         }
     });
 }
-function filterBySearch() {
+function filterBySearch(sales_list) {
     $("#formsearch").submit(function (e) {
         return false;
     });
     $('#formsearch').submit(function (event) {
-        event.preventDefault;
         var city = filterSmth('city');
         var category = filterSmth('category');
         var url = '/sales';
+
         var shop = {
             name: 'shop',
             value: $('#search').val()
@@ -277,8 +269,8 @@ function filterBySearch() {
         if (url != window.location) {
             window.history.pushState(null, null, (url + '/index/' + shop['value']).replace(/ /g, '_'));
         }
-        $('.sales-list').html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
-        $('div.sales-list').load(url, {js: 'true', 'result': [city, category, shop]}, function () {
+        $(sales_list).html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
+        $(sales_list).load(url, {js: 'true', 'result': [city, category, shop]}, function () {
             $(".sales-list-load").css({
                 'max-height': 'calc(100vh - 70px)'
             });
@@ -288,7 +280,7 @@ function filterBySearch() {
                 scrollInertia: 200
             });
             setPadding();
-            $('.sales-list').mCustomScrollbar("destroy");
+            $(sales_list).mCustomScrollbar("destroy");
         });
     });
 }
