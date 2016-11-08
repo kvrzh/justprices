@@ -1,10 +1,3 @@
-<script>
-    loadSale();
-    $('.filter_error button').click(function () {
-        resetFilter();
-        $('.filter button').click();
-    });
-</script>
 <div class="sales-list-load">
     <h1><?=$city ?></h1>
     <?php if($sales == false): ?>

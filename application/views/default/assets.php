@@ -11,6 +11,6 @@
     <script type="text/javascript" src="//vk.com/js/api/openapi.js?136"></script>
     <script src="<?= assets_url('javascripts/bootstrap.min.js'); ?>" type="text/javascript"></script>
     <script src="<?= assets_url('custom-scroll/jquery.mCustomScrollbar.concat.min.js'); ?>"></script>
-    <script src="<?= js_url('script.js'); ?>" type="text/javascript"></script>
+    <script src="<?= js_url('scripty.js'); ?>" type="text/javascript"></script>
 </head>
 <body>

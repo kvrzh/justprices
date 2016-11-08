@@ -1,9 +1,3 @@
-<script>
-    $(document).ready(function(){
-        loadSaleList();
-    })
-</script>
-
 <div class="sale_item_details">
     <i class="fa fa-times" aria-hidden="true"></i>
     <?php if ($status == true && isset($status)): ?>
