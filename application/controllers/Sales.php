@@ -16,11 +16,13 @@ class Sales extends MY_Controller
 
     function index($shop = null)
     {
+        $shop = str_replace('_', ' ', $shop);
         if (!isset($shop)) {
             $shop = 0;
         } else {
             $shop = str_replace('_', ' ', $this->Sales_model->getShopsIdByName($shop));
         }
+
         if (isset($_SESSION['city'])) {
             if (is_string($_SESSION['city'])) {
                 $_SESSION['city'] = decode_encode_city((string)$_SESSION['city']);
@@ -35,7 +37,7 @@ class Sales extends MY_Controller
                 "value" => $data['city']
             ),
             "shop" => array(
-                "name" => "shop",
+                "name" => "shops_id",
                 "value" => $shop
             ),
             "category" => array(
@@ -44,6 +46,9 @@ class Sales extends MY_Controller
             )
         ];
         $data['city'] = decode_encode_city((int)$data['city']);
+        if (!isset($_SESSION['city'])) {
+            $_SESSION['city'] = $data['city'];
+        }
         $data['cities'] = $this->Sales_model->getTable('city');
         $data['categories'] = $this->Sales_model->getTable('category');
         $data['sales'] = $this->Sales_model->getFilterSales($default);
@@ -140,5 +145,17 @@ class Sales extends MY_Controller
             echo '["Извините, нет совпадений"]';
         }
 
+    }
+
+    function newSales()
+    {
+        $id = $_GET['id'];
+        $ar = [
+            "sale" => array(
+                "name" => "sales_id",
+                "value" => 0
+            )];
+        $data['sales'] = $this->Sales_model->getFilterSales($ar, $id);
+        $this->load->view('sales/newSalesList', $data);
     }
 }

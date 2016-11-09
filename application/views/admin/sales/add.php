@@ -23,7 +23,7 @@
         <select name="category_id" required>
             <option selected disabled>Выберите категорию скидки</option>
             <?php foreach ($categories as $category): ?>
-                <option value="<?= $category['category_id'] ?>"><?= $category['category_name'] ?></option>
+                <option value="<?= $category['id'] ?>"><?= $category['category_name'] ?></option>
             <?php endforeach; ?>
         </select>
         <label for="cities">Выберите город:</label>

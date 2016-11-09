@@ -14,10 +14,11 @@
             <tbody>
             <?php foreach ($categories as $category): ?>
                 <tr>
-                    <td><a class="btn btn-primary" href="/admin/categories/edit/<?= $category['category_id'] ?>">Редактировать</a>
-                        <a class="btn btn-danger" href="/admin/categories/delete/<?= $category['category_id'] ?>">Удалить</a>
+                    <td><a class="btn btn-primary"
+                           href="/admin/categories/edit/<?= $category['id'] ?>">Редактировать</a>
+                        <a class="btn btn-danger" href="/admin/categories/delete/<?= $category['id'] ?>">Удалить</a>
                     </td>
-                    <td><?= $category['category_id'] ?></td>
+                    <td><?= $category['id'] ?></td>
                     <td><?= $category['category_name'] ?></td>
                 </tr>
             <?php endforeach; ?>

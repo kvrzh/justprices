@@ -181,6 +181,9 @@ div.main{
     }
   }
   div.social{
+    @include respond-to('880px') {
+      width: 50% !important;
+    }
     @include respond-to('phones') {
       width: 100% !important;
     }
@@ -451,6 +454,14 @@ div.sales{
     .sales-list-item:nth-child(2) {
       border: none;
     }
+    .button_pagination {
+      text-align: center;
+      border-top: 1px solid #e2e2e2;
+      button {
+        margin: 10px 20px;
+        padding: 5px 50px;
+      }
+    }
     .sales-list-item {
       padding: 15px 0;
       border-top: 1px solid #e2e2e2;
@@ -537,6 +548,15 @@ div.sales{
       padding-right:15px;
       i.fa-spinner{
         margin-top: calc(50vh - 25px);
+        font-size: 50px;
+      }
+    }
+    div.new_sale_spin {
+      height: 150px;
+      text-align: center;
+      padding-right: 15px;
+      i.fa-spinner {
+        margin-top: 50px;
         font-size: 50px;
       }
     }

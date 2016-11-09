@@ -25,6 +25,9 @@ $(document).ready(function () {
         .on('click', '.filter_error button', function () {
             resetFilter();
             $('.filter button').click();
+        })
+        .on('click', '.button_pagination button', function () {
+            loadNewSales();
         });
     $(sales_filter).on('click', '>span', function () {
         resetFilter();
@@ -282,5 +285,17 @@ function filterBySearch(sales_list) {
             setPadding();
             $(sales_list).mCustomScrollbar("destroy");
         });
+    });
+}
+function loadNewSales() {
+    var lastElem = $('input[name="sales_id"]').last();
+    var lastId = $(lastElem).val();
+    var parent = $('.sales-list-item').parent();
+    var url = '/sales/newSales';
+    $('.button_pagination').remove();
+    $(parent).append('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
+    $.get('/sales/newSales', {'id': lastId}, function (data) {
+        $('.sale_spin').remove();
+        $(parent).append(data);
     });
 }

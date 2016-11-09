@@ -21,7 +21,8 @@ class Admin_model extends CI_Model
             $this->db->join('shops', 'shop=shops.shops_id', 'inner');
             $this->db->join('sales_city', 'sales.id=sales_city.sales_id', 'inner');
             $this->db->join('city', "city_id=city.id", 'inner');
-            $this->db->join('category', 'category.category_id=sales.category_id', 'inner');
+            $this->db->join('category', 'category.id=sales.category_id', 'inner');
+            $this->db->order_by("sales.id", "asc");
         }
         if ($id) {
             $this->db->where('sales_id', $id);

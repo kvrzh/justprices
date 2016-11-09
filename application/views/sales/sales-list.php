@@ -8,7 +8,7 @@
         </div>
     <?php else: ?>
         <?php foreach ($sales as $sale): ?>
-        <div class="sales-list-item" onload="setPadding()">
+            <div class="sales-list-item">
             <h3><?= $sale['name'] ?></h3>
             <img src="<?= img_url('logos/' . $sale['image']) ?>">
             <div class="sale-shop-info">
@@ -23,5 +23,8 @@
             </div>
         </div>
         <?php endforeach; ?>
+        <div class="button_pagination">
+            <button class="btn btn-success">Больше скидок</button>
+        </div>
     <?php endif; ?>
 </div>

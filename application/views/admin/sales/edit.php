@@ -27,9 +27,9 @@
             <option selected disabled>Выберите категорию скидки</option>
             <?php foreach ($categories as $category): ?>
                 <?php if ($category['category_id'] == $sale[0]['category_id']): ?>
-                    <option selected value="<?= $category['category_id'] ?>"><?= $category['category_name'] ?></option>
+                    <option selected value="<?= $category['id'] ?>"><?= $category['category_name'] ?></option>
                 <?php else: ?>
-                    <option value="<?= $category['category_id'] ?>"><?= $category['category_name'] ?></option>
+                    <option value="<?= $category['id'] ?>"><?= $category['category_name'] ?></option>
                 <?php endif; ?>
             <?php endforeach; ?>
         </select>
