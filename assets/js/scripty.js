@@ -293,9 +293,9 @@ function loadNewSales() {
     var parent = $('.sales-list-item').parent();
     var url = '/sales/newSales';
     $('.button_pagination').remove();
-    $(parent).append('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
+    $(parent).append('<div class="new_sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
     $.get('/sales/newSales', {'id': lastId}, function (data) {
-        $('.sale_spin').remove();
+        $('.new_sale_spin').remove();
         $(parent).append(data);
     });
 }

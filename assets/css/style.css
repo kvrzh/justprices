@@ -5947,9 +5947,9 @@ div.main, div.sales {
     border-bottom: 1px solid rgba(188, 188, 188, 0.55); }
 
 @media only screen and (max-width: 880px) {
-    div.main div.social, div.sales div.social {
-        width: 50% !important;
-    }
+  div.main div.social, div.sales div.social {
+    width: 50% !important;
+  }
 }
     @media only screen and (max-width: 500px) {
       div.main div.social, div.sales div.social {
@@ -6162,12 +6162,12 @@ div.sales .sales-list {
 
 div.sales .sales-list .button_pagination {
     text-align: center;
-    border-top: 1px solid #e2e2e2;
+  border-top: 1px solid #e2e2e2;
 }
 
 div.sales .sales-list .button_pagination button {
-    margin: 10px 20px;
-    padding: 5px 50px;
+  margin: 10px 20px;
+  padding: 5px 50px;
 }
   div.sales .sales-list .sales-list-item {
     padding: 15px 0;
@@ -6244,12 +6244,12 @@ div.sales .sales-list .button_pagination button {
 div.sales .sales-list div.new_sale_spin {
     height: 150px;
     text-align: center;
-    padding-right: 15px;
+  padding-right: 15px;
 }
 
 div.sales .sales-list div.new_sale_spin i.fa-spinner {
-    margin-top: 50px;
-    font-size: 60;
+  margin-top: 50px;
+  font-size: 30px;
 }
   div.sales .sales-list div.sale_item_details {
     height: calc(100vh - 70px);
