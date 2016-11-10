@@ -1,7 +1,7 @@
 <div class="sale_item_details">
     <i><img src="<?= img_url('cross.png'); ?>"/></i>
     <?php if ($status == true && isset($status)): ?>
-
+        <input type="hidden" name="sales_id" value="<?= $sale[0]['sales_id'] ?>">
     <h1>Cкидка: <b><?= $sale[0]['sale'] ?></b></h1>
     <h3><?= $sale[0]['name'] ?></h3>
         <span><b><?= $sale[0]['category_name'] ?></b></span>

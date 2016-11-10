@@ -23,8 +23,10 @@
             </div>
         </div>
         <?php endforeach; ?>
+        <?php if (isset($new_sales) && $new_sales == true): ?>
         <div class="button_pagination">
             <button class="btn btn-success">Больше скидок</button>
         </div>
+        <?php endif; ?>
     <?php endif; ?>
 </div>

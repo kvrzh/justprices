@@ -65,6 +65,13 @@ class Sales extends MY_Controller
             $_SESSION['city'] = decode_encode_city((int)$res['city_id']);
             $data['city'] = $_SESSION['city'];
             $data['sales'] = $this->Sales_model->getFilterSales($result);
+
+        }
+        if (isset($data['sales'][10])) {
+            unset($data['sales'][10]);
+            $data['new_sales'] = true;
+        } else {
+            $data['new_sales'] = false;
         }
         if(!$data['sales']){
             $data['sales'] = false;
@@ -149,13 +156,19 @@ class Sales extends MY_Controller
 
     function newSales()
     {
+        if (isset($_GET['result'][2]) && $_GET['result'][2]['name'] == 'shop') {
+            $shop_id = str_replace('_', ' ', $_GET['result'][2]['value']);
+            $shop_id = $this->Sales_model->getShopsIdByName($shop_id);
+            $_GET['result'][2]['value'] = $shop_id;
+        }
+        if (isset($data['sales'][10])) {
+            unset($data['sales'][10]);
+            $data['new_sales'] = true;
+        } else {
+            $data['new_sales'] = false;
+        }
         $id = $_GET['id'];
-        $ar = [
-            "sale" => array(
-                "name" => "sales_id",
-                "value" => 0
-            )];
-        $data['sales'] = $this->Sales_model->getFilterSales($ar, $id);
+        $data['sales'] = $this->Sales_model->getFilterSales($_GET['result'], $id);
         $this->load->view('sales/newSalesList', $data);
     }
 }

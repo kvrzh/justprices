@@ -56,7 +56,7 @@ class Sales_model extends CI_Model
         $this->db->join('city', "city_id=city.id", 'inner');
         $this->db->join('category', 'category.id=sales.category_id', 'inner');
         $this->db->order_by("sales.id", "asc");
-        $this->db->limit(10);
+        $this->db->limit(11);
         if (isset($from)) {
             $this->db->where('sales_id>', $from);
         }

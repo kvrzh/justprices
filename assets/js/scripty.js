@@ -6,6 +6,7 @@ $(document).ready(function () {
         timeout: 0,
         scrollInertia: 200
     });
+
     window.addEventListener("popstate", function (e) {
         e.preventDefault;
         window.location.reload();
@@ -28,6 +29,7 @@ $(document).ready(function () {
         })
         .on('click', '.button_pagination button', function () {
             loadNewSales();
+
         });
     $(sales_filter).on('click', '>span', function () {
         resetFilter();
@@ -126,6 +128,7 @@ function resizeSales(div_sales_list, div_filter) {
     }
 }
 function loadSale(elem) {
+
     var id = $(elem).parent().find('input[name = "sales_id"]').attr('value');
     var url = '/sales/sale/' + id;
     if (url != window.location) {
@@ -142,6 +145,9 @@ function loadSale(elem) {
     });
 }
 function loadSaleList() {
+    var id = $('input[name = "sales_id"]').attr('value');
+
+
     var url = '/sales';
     if (url != window.location) {
         window.history.pushState(null, null, url);
@@ -156,7 +162,13 @@ function loadSaleList() {
             timeout: 0,
             scrollInertia: 200
         });
+        var element = $('input[value = "' + id + '"]').parent().parent();
+        var el = $(element).position().top;
+        $('.mCustomScrollbar').last().mCustomScrollbar("scrollTo", el, {
+            timeout: 100
+        });
         $('.sales-list').mCustomScrollbar("destroy");
+
     });
 }
 
@@ -288,14 +300,26 @@ function filterBySearch(sales_list) {
     });
 }
 function loadNewSales() {
+    var city = filterSmth('city');
+    var category = filterSmth('category');
+    var shop = {
+        name: 'shop',
+        value: $('#search').val()
+    };
     var lastElem = $('input[name="sales_id"]').last();
     var lastId = $(lastElem).val();
     var parent = $('.sales-list-item').parent();
+
     var url = '/sales/newSales';
     $('.button_pagination').remove();
     $(parent).append('<div class="new_sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
-    $.get('/sales/newSales', {'id': lastId}, function (data) {
+    $.get('/sales/newSales', {'id': lastId, 'result': [city, category, shop]}, function (data) {
         $('.new_sale_spin').remove();
         $(parent).append(data);
+        var lastElem1 = $('div.sales-list-item').last();
+        var position = $(lastElem1).position().t
+        $('.mCustomScrollbar').last().mCustomScrollbar("scrollTo", position, {
+            timeout: 100
+        });
     });
 }
