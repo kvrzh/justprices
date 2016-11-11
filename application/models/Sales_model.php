@@ -13,6 +13,11 @@ class Sales_model extends CI_Model
         parent::__construct();
     }
 
+    /**
+     * @param string $city
+     * @param null|string $shop
+     * @return array|bool
+     */
     public function getSales($city, $shop = null)
     {
         $result = false;
@@ -30,6 +35,10 @@ class Sales_model extends CI_Model
         return $result;
     }
 
+    /**
+     * @param string $name
+     * @return bool|object
+     */
     public function getShopsIdByName($name)
     {
         $result = false;
@@ -40,6 +49,11 @@ class Sales_model extends CI_Model
         return $result;
     }
 
+    /**
+     * @param null|array $array
+     * @param null|int $from
+     * @return array|bool
+     */
     public function getFilterSales($array = null, $from = null)
     {
         $result = false;
@@ -69,6 +83,10 @@ class Sales_model extends CI_Model
     }
 
 
+    /**
+     * @param string $table
+     * @return array|bool
+     */
     public function getTable($table)
     {
         $result = false;
@@ -80,6 +98,11 @@ class Sales_model extends CI_Model
         return $result;
 
     }
+
+    /**
+     * @param int $id
+     * @return array|bool
+     */
     public function getSaleById($id){
         $sale = false;
         $this->db->select('*');
@@ -94,6 +117,11 @@ class Sales_model extends CI_Model
         }
         return $sale;
     }
+
+    /**
+     * @param string $search
+     * @return array|bool|string
+     */
     public function liveSearch($search){
         $result = false;
         $this->db->select('name');

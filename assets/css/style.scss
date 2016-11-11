@@ -401,9 +401,10 @@ div.sales{
   }
   .sales-list {
     background: #f9f9f9;
-    max-height: calc(100vh - 70px);
+    height: calc(100vh - 70px);
     padding-right: 0;
     div.sales-list-load{
+      max-height: calc(100vh - 70px);
       h1{
         @include respond-to('phones') {
           padding-right: 0;
@@ -564,12 +565,19 @@ div.sales{
       height: calc(100vh - 70px);
       text-align: center;
       i {
+        @include respond-to('phones') {
+          right: 0;
+        }
         position: absolute;
         right: 3%;
         top: 20px;
         font-size: 30px;
         cursor: pointer;
+        text-align: right;
         img {
+          @include respond-to('phones') {
+            width: 40%;
+          }
           width: 50%;
         }
       }

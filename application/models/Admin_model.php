@@ -13,6 +13,12 @@ class Admin_model extends CI_Model
         parent::__construct();
     }
 
+    /**
+     * @param string $table
+     * @param null|int $id
+     * @param bool $join
+     * @return array|bool
+     */
     public function getTable($table, $id = null, $join = true)
     {
         $result = false;
@@ -34,12 +40,22 @@ class Admin_model extends CI_Model
         return $result;
     }
 
+    /**
+     * @param string $table
+     * @param int $id
+     * @param string $table_id
+     */
     public function deleteItem($table, $id, $table_id = 'sales_id')
     {
         $this->db->where($table_id, $id);
         $this->db->delete($table);
     }
 
+    /**
+     * @param string $table
+     * @param array $array
+     * @param string $status
+     */
     public function addItem($table, $array, $status = 'Ок')
     {
         if (isset($array)) {
@@ -52,6 +68,13 @@ class Admin_model extends CI_Model
         }
     }
 
+    /**
+     * @param string $table
+     * @param array $array
+     * @param int $id
+     * @param string $status
+     * @param string $table_id
+     */
     public function updateItem($table, $array, $id, $status = 'Ок', $table_id = 'sales_id')
     {
         $this->db->where($table_id, $id);
@@ -60,6 +83,9 @@ class Admin_model extends CI_Model
         }
     }
 
+    /**
+     * @return mixed
+     */
     public function getLastIdItem()
     {
         $this->db->select_max('id');
@@ -68,6 +94,10 @@ class Admin_model extends CI_Model
 
     }
 
+    /**
+     * @param int $id
+     * @param array $array
+     */
     public function updateSaleCity($id, $array)
     {
         $this->db->where('sales_id', $id);

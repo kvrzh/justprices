@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var sales_list = $(".sales-list");
     var sales_filter = $("div.filter");
-    $(sales_list).mCustomScrollbar({
+    $('.sales-list-load').mCustomScrollbar({
         theme: "dark",
         timeout: 0,
         scrollInertia: 200
@@ -134,6 +134,7 @@ function loadSale(elem) {
     if (url != window.location) {
         window.history.pushState(null, null, url);
     }
+    
     $('.sales-list').html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
     $('div.sales-list').load(url, {js: 'true'}, function () {
         $(".sale_item_details").mCustomScrollbar({
@@ -146,8 +147,6 @@ function loadSale(elem) {
 }
 function loadSaleList() {
     var id = $('input[name = "sales_id"]').attr('value');
-
-
     var url = '/sales';
     if (url != window.location) {
         window.history.pushState(null, null, url);

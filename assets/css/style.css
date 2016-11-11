@@ -5947,9 +5947,9 @@ div.main, div.sales {
     border-bottom: 1px solid rgba(188, 188, 188, 0.55); }
 
 @media only screen and (max-width: 880px) {
-  div.main div.social, div.sales div.social {
-    width: 50% !important;
-  }
+    div.main div.social, div.sales div.social {
+        width: 50% !important;
+    }
 }
     @media only screen and (max-width: 500px) {
       div.main div.social, div.sales div.social {
@@ -6116,16 +6116,25 @@ div.sales .filter {
       background: #2ecc71; }
 div.sales .sales-list {
   background: #f9f9f9;
-  max-height: calc(100vh - 70px);
+    height: calc(100vh - 70px);
   padding-right: 0; }
-  div.sales .sales-list div.sales-list-load h1 {
+
+div.sales .sales-list div.sales-list-load {
+    max-height: calc(100vh - 70px);
+}
+
+div.sales .sales-list div.sales-list-load h1 {
     text-align: center;
     border-bottom: 1px solid #c3c3c3;
     padding-bottom: 15px;
-    padding-right: 60px; }
-    @media only screen and (max-width: 500px) {
-      div.sales .sales-list div.sales-list-load h1 {
-        padding-right: 0; } }
+    padding-right: 60px;
+}
+
+@media only screen and (max-width: 500px) {
+    div.sales .sales-list div.sales-list-load h1 {
+        padding-right: 0;
+    }
+}
   div.sales .sales-list .mCSB_scrollTools {
     margin: 15px 0; }
   div.sales .sales-list div.filter_error {
@@ -6162,12 +6171,12 @@ div.sales .sales-list {
 
 div.sales .sales-list .button_pagination {
     text-align: center;
-  border-top: 1px solid #e2e2e2;
+    border-top: 1px solid #e2e2e2;
 }
 
 div.sales .sales-list .button_pagination button {
-  margin: 10px 20px;
-  padding: 5px 50px;
+    margin: 10px 20px;
+    padding: 5px 50px;
 }
   div.sales .sales-list .sales-list-item {
     padding: 15px 0;
@@ -6244,12 +6253,12 @@ div.sales .sales-list .button_pagination button {
 div.sales .sales-list div.new_sale_spin {
     height: 150px;
     text-align: center;
-  padding-right: 15px;
+    padding-right: 15px;
 }
 
 div.sales .sales-list div.new_sale_spin i.fa-spinner {
-  margin-top: 50px;
-  font-size: 30px;
+    margin-top: 50px;
+    font-size: 30px;
 }
   div.sales .sales-list div.sale_item_details {
     height: calc(100vh - 70px);
@@ -6259,9 +6268,23 @@ div.sales .sales-list div.new_sale_spin i.fa-spinner {
       right: 3%;
       top: 20px;
       font-size: 30px;
-      cursor: pointer; }
+        cursor: pointer;
+        text-align: right;
+    }
+
+@media only screen and (max-width: 500px) {
+    div.sales .sales-list div.sale_item_details i {
+        right: 0;
+    }
+}
       div.sales .sales-list div.sale_item_details i img {
         width: 50%; }
+
+@media only screen and (max-width: 500px) {
+    div.sales .sales-list div.sale_item_details i img {
+        width: 40%;
+    }
+}
     div.sales .sales-list div.sale_item_details h1 {
       font-size: 40px;
       color: #000;
