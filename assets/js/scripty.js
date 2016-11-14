@@ -1,24 +1,32 @@
 $(document).ready(function () {
+
     var sales_list = $(".sales-list");
     var sales_filter = $("div.filter");
-    $('.sales-list-load').mCustomScrollbar({
+    var sale_list_load = $('.sales-list-load');
+    var sale_item_details = $('.sale_item_details');
+    $(sale_list_load).mCustomScrollbar({
         theme: "dark",
         timeout: 0,
         scrollInertia: 200
     });
-
     window.addEventListener("popstate", function (e) {
         e.preventDefault;
         window.location.reload();
     }, false);
-
+    if ($(sale_list_load).length <= 0) {
+        $(sale_item_details).mCustomScrollbar({
+            theme: "dark",
+            timeout: 0,
+            scrollInertia: 200
+        });
+    }
     showMenu();
     filterBySearch(sales_list);
     search();
     resizeSearch();
     $(sales_list)
         .on('click', '.sales-list-item button', function () {
-            loadSale(this);
+            loadSale(this, sales_list);
         })
         .on('click', 'i', function () {
             loadSaleList();
@@ -127,50 +135,61 @@ function resizeSales(div_sales_list, div_filter) {
         }
     }
 }
-function loadSale(elem) {
-
+function loadSale(elem, sales_list) {
     var id = $(elem).parent().find('input[name = "sales_id"]').attr('value');
     var url = '/sales/sale/' + id;
     if (url != window.location) {
         window.history.pushState(null, null, url);
     }
-    
-    $('.sales-list').html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
-    $('div.sales-list').load(url, {js: 'true'}, function () {
+    $('.sales-list-load').fadeOut('1000');
+    $(sales_list).append('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
+    $(sales_list).append('<div class="sale_item_details"></div>');
+    $('div.sale_item_details').load(url, {js: 'true'}, function () {
+        $('.sale_spin').fadeOut('1000');
+        $('.sale_spin').remove();
         $(".sale_item_details").mCustomScrollbar({
             theme: "dark",
             timeout: 0,
             scrollInertia: 200
         });
-        $('.sales-list').mCustomScrollbar("destroy");
+
     });
 }
 function loadSaleList() {
-    var id = $('input[name = "sales_id"]').attr('value');
+    var id = $('.sale_item_details input[name = "sales_id"]').attr('value');
     var url = '/sales';
     if (url != window.location) {
         window.history.pushState(null, null, url);
     }
-    $('.sales-list').html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
-    $('div.sales-list').load(url, {js: 'true'}, function () {
-        $(".sales-list-load").css({
-            'max-height': 'calc(100vh - 70px)'
+    if ($('.sales-list-load').length <= 0) {
+        $('.sale_item_details').mCustomScrollbar("destroy");
+        $('.sales-list').html('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
+        $('div.sales-list').load(url, {js: 'true'}, function () {
+            $(".sales-list-load").css({
+                'max-height': 'calc(100vh - 70px)'
+            });
+            $(".sales-list-load").mCustomScrollbar({
+                theme: "dark",
+                timeout: 0,
+                scrollInertia: 200
+            });
         });
-        $(".sales-list-load").mCustomScrollbar({
-            theme: "dark",
-            timeout: 0,
-            scrollInertia: 200
+    } else {
+        $('.sale_item_details').fadeOut('1000', function () {
+            $('.sale_item_details').remove();
+            $('.sales-list').append('<div class="sale_spin"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>');
+            $('.sales-list-load').fadeIn('1000', function () {
+                $('.sale_spin').fadeOut('1000');
+                $('.sale_spin').remove();
+                var element = $('input[value = "' + id + '"]').parent().parent();
+                var el = $(element).position().top;
+                $('.mCustomScrollbar').last().mCustomScrollbar("scrollTo", el, {
+                    timeout: 100
+                });
+            });
         });
-        var element = $('input[value = "' + id + '"]').parent().parent();
-        var el = $(element).position().top;
-        $('.mCustomScrollbar').last().mCustomScrollbar("scrollTo", el, {
-            timeout: 100
-        });
-        $('.sales-list').mCustomScrollbar("destroy");
-
-    });
+    }
 }
-
 function filter() {
     var menu = $('div.sales .filter');
     var content = $('div.sales .sales-list');
@@ -189,6 +208,9 @@ function filter() {
                 name: 'shop',
                 value: 0
             };
+        }
+        if ($(window).width() < 992) {
+            $('.menu-search i').click();
         }
         var url = '/sales';
         if (url != window.location) {
@@ -316,7 +338,7 @@ function loadNewSales() {
         $('.new_sale_spin').remove();
         $(parent).append(data);
         var lastElem1 = $('div.sales-list-item').last();
-        var position = $(lastElem1).position().t
+        var position = $(lastElem1).position().top;
         $('.mCustomScrollbar').last().mCustomScrollbar("scrollTo", position, {
             timeout: 100
         });

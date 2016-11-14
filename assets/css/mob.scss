@@ -1,0 +1,126 @@
+@import "../stylesheets/bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+
+$background-color: #161616;
+$green-color: #27ae60;
+$site-font: 'Roboto', sans-serif;
+@mixin respond-to($media) {
+  @if $media == 'small' {
+    @media only screen and (max-width: 1200px) {
+      @content;
+    }
+  } @else if $media == '880px' {
+    @media only screen and (max-width: 880px) {
+      @content;
+    }
+  } @else if $media == 'phones' {
+    @media only screen and (max-width: 500px) {
+      @content;
+    }
+  }
+}
+
+html {
+  background: #fff;
+}
+
+body {
+  max-width: 882px;
+  width: 100%;
+  margin: 0 auto;
+  background: url(../images/bg.jpg) #161616;
+  font-family: $site-font;
+  background-size: cover;
+  div.main {
+    min-height: 100vh;
+    div.name {
+      width: 100%;
+      text-align: center;
+      img {
+        @include respond-to('phones') {
+          width: 80%;
+        }
+        width: 50%;
+        padding-top: 10vh;
+      }
+      h1 {
+        font-weight: 200;
+        color: #fff;
+        font-size: 30px;
+        padding: 0 10px;
+      }
+      h3 {
+        font-weight: 300;
+        color: #D6D6D6;
+        margin: 20px 0;
+        font-size: 20px;
+        padding: 0 10px;
+      }
+    }
+  }
+  a.go {
+    &::before {
+      content: "";
+      top: 0;
+      border-top: 2px solid currentColor;
+      border-left: 2px solid currentColor;
+      border-right: 2px solid currentColor;
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 10px;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 10px;
+      bottom: 0;
+      border-bottom: 2px solid currentColor;
+      border-left: 2px solid currentColor;
+      border-right: 2px solid currentColor;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+    position: relative;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #27ae60;
+    padding: 5px 10px;
+    font-size: 20px;
+    display: block;
+    width: 180px;
+    text-align: center;
+    transition: 0.3s;
+    margin: 30vh auto 20px auto;
+  }
+  div.social {
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid;
+    width: 80%;
+    margin: 0 auto;
+    a {
+      &:last-child {
+        i {
+          padding: 7px 12px;
+        }
+      }
+      margin: 0 15px;
+      i {
+        font-size: 25px;
+        color: #fff;
+        border: 2px solid;
+        padding: 7px;
+        border-radius: 25px;
+        transition: 0.3s;
+        &:hover {
+          color: #27ae60;
+          transition: 0.3s;
+        }
+      }
+    }
+  }
+}
