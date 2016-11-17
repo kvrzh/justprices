@@ -9,6 +9,8 @@
 
 namespace classes;
 
+use MongoDB\Driver\Exception\Exception;
+
 if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class User
@@ -48,6 +50,7 @@ class User
      * @param string $login
      * @param string $password
      * @return User
+     * @throws \Exception
      */
     public static function getUser($login, $password)
     { // Get User by login & password
@@ -99,7 +102,7 @@ class User
             $this->CI->load->model('Users_model');
         }
         if (empty(array_diff($this->data, $data))) {
-
+            throw new \Exception('Данные не изменились');
         } else {
             $this->CI->Users_model->updateUser((int)$this->data['id'], $data);
         }

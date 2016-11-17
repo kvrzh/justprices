@@ -18,9 +18,11 @@ class Users_model extends CI_Model
      * @param string $login
      * @param string $password
      * @return \classes\User
+     * @throws Exception
      */
     public function getUserByLogin($login, $password)
     {
+        $result = null;
         $this->db->select('*');
         $this->db->where('login', $login);
         $this->db->where('password', $password);
@@ -28,7 +30,11 @@ class Users_model extends CI_Model
         foreach ($query->result_array() as $row) {
             $result[] = $row;
         }
-        return new classes\User($login, $password, $result[0]);
+        if ($result == null) {
+            throw new Exception('Такого пользователя нет');
+        } else {
+            return new classes\User($login, $password, $result[0]);
+        }
     }
 
     /**
@@ -62,9 +68,11 @@ class Users_model extends CI_Model
     /**
      * @param int $id
      * @return array
+     * @throws Exception
      */
     public function getShopsForUser($id)
     {
+        $result = null;
         $this->db->select('*');
         $this->db->join('shops', 'shop_id = shops.shops_id', 'inner');
         $this->db->where('user_id', $id);
@@ -72,7 +80,11 @@ class Users_model extends CI_Model
         foreach ($query->result_array() as $row) {
             $result[] = $row;
         }
-        return $result;
+        if ($result == null) {
+            throw new Exception('Нет выбранных магазинов');
+        } else {
+            return $result;
+        }
     }
 
     /**

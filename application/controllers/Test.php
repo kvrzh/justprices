@@ -13,8 +13,8 @@ class Test extends MY_Controller
     {
 
         $data = array(
-            'login' => 'ivanss',
-            'password' => 'password',
+            'login' => 'anton',
+            'password' => 'kvrzh',
             'email' => 'kovr-anton@mail.ru'
         );
         $data1 = array(
@@ -23,10 +23,12 @@ class Test extends MY_Controller
             'email' => 'kovr-anton@mail.ru'
         );
         try {
-            $user = classes\User::getUser('ivans', 'password');
-            $user->updateUser($data);
+            $user = classes\User::getUser('ivanss', 'password');
+            print_r($user);
+            print_r($user->getShopsForUser());
         } catch (Exception $e) {
-            $e->getMessage();
+            echo $e->getMessage();
         }
+
     }
 }
