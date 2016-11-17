@@ -24,8 +24,7 @@ class Test extends MY_Controller
         );
         try {
             $user = classes\User::getUser('ivanss', 'password');
-            print_r($user);
-            print_r($user->getShopsForUser());
+            $user->addShop(4);
         } catch (Exception $e) {
             echo $e->getMessage();
         }

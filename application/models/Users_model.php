@@ -57,12 +57,16 @@ class Users_model extends CI_Model
     /**
      * @param int $id
      * @param int $shop_id
+     * @throws Exception
      */
     public function addShop($id, $shop_id)
     {
         $this->db->set('user_id', $id);
         $this->db->set('shop_id', $shop_id);
         $this->db->insert('user_shop');
+        if ($this->db->error()) {
+            throw new Exception('Пользователь уже подписан на данный магазин');
+        }
     }
 
     /**
