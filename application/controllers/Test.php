@@ -1,6 +1,6 @@
 <?php
 use classes as classes;
-
+use errors as errors;
 /**
  * Created by PhpStorm.
  * User: bizremy
@@ -11,9 +11,8 @@ class Test extends MY_Controller
 {
     function index()
     {
-
         $data = array(
-            'login' => 'anton',
+            'login' => 'antoniow',
             'password' => 'kvrzh',
             'email' => 'kovr-anton@mail.ru'
         );
@@ -23,11 +22,12 @@ class Test extends MY_Controller
             'email' => 'kovr-anton@mail.ru'
         );
         try {
-            $user = classes\User::getUser('ivanss', 'password');
-            $user->addShop(12);
+            $user = classes\User::registrationUser($data, true);
+            print_r($user);
             echo 'normasik';
-        } catch (Exception $e) {
+        } catch (errors\UserException $e) {
             echo $e->getMessage();
+            echo $e->getEx();
         }
 
     }
